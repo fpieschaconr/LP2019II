@@ -49,6 +49,11 @@ class Tokens {
         row++;
         column++;
         String temp;
+        if (value.equals("error")) {
+            temp = ">>> Error lexico(linea:" + row + ",posicion:" + column + ")";
+            writeToken(temp);
+            return;
+        }
         if (RESERVED.contains(value)) {
             temp = "<" + value + "," + row + "," + column + ">";
             writeToken(temp);
