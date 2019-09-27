@@ -14,6 +14,7 @@ class Tokens {
         File file = new File("RESERVED.txt");
         FileInputStream fis = new FileInputStream(file);
         byte[] data = new byte[(int) file.length()];
+        //noinspection ResultOfMethodCallIgnored
         fis.read(data);
         fis.close();
         String str = new String(data, StandardCharsets.UTF_8);
@@ -51,7 +52,6 @@ class Tokens {
         if (RESERVED.contains(value)) {
             temp = "<" + value + "," + row + "," + column + ">";
             writeToken(temp);
-            return;
         } else {
             for (String token : TOKENS) {
                 String[] temp2 = token.split("#;#");
@@ -68,7 +68,6 @@ class Tokens {
             }
             temp = "<id," + value + "," + row + "," + column + ">";
             writeToken(temp);
-            return;
         }
     }
 }
