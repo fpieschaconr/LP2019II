@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 class LexicAnalizer {
     static private final int[] position = {0, 0}; // 0: row 1:column
+    static private int[] last = {0, 0}; //sobre esta posicion se hacen los analisis
 
     private static String trimEnd(String str) {
         char[] temp = str.toCharArray();
@@ -39,6 +40,8 @@ class LexicAnalizer {
     private static char nextCharacter(ArrayList<String> fracCode) {
         // char next=1;
         // if(position[0]<fracCode.size())
+        last[0] = position[0];
+        last[1] = position[1];
         char next = fracCode.get(position[0]).charAt(position[1]);
         /*
          * else{ System.out.println("fin de la cadena"); return '#'; }
@@ -72,7 +75,8 @@ class LexicAnalizer {
 
         ArrayList<String> test = splitLines(str);
 
-        Tokens.clearOutput();
+        Tokens tokens = new Tokens();
+        tokens.clearOutput();
 
         int lastRow = 0;
         while (hasNextChar(test)) {
@@ -82,22 +86,22 @@ class LexicAnalizer {
 
             switch (current) {
                 case '+':
-                    Tokens.writeToken(lastWord);
+                    tokens.tokenize(lastWord, last[0], last[1]);
                     System.out.println(lastWord);
                     lastWord = ""; // se cambia a una palabra nueva
                     break;
                 case '-':
-                    Tokens.writeToken(lastWord);
+                    tokens.tokenize(lastWord, last[0], last[1]);
                     System.out.println(lastWord);
                     lastWord = ""; // se cambia a una palabra nueva
                     break;
                 case '/':
-                    Tokens.writeToken(lastWord);
+                    tokens.tokenize(lastWord, last[0], last[1]);
                     System.out.println(lastWord);
                     lastWord = ""; // se cambia a una palabra nueva
                     break;
                 case '*':
-                    Tokens.writeToken(lastWord);
+                    tokens.tokenize(lastWord, last[0], last[1]);
                     System.out.println(lastWord);
                     lastWord = ""; // se cambia a una palabra nueva
                     break;
@@ -105,45 +109,45 @@ class LexicAnalizer {
                     if (!("!".equals(lastWord) || "=".equals(lastWord) || ":".equals(lastWord) || ">".equals(lastWord)
                             || "<".equals(lastWord) || "+:".equals(lastWord) || "-:".equals(lastWord)
                             || "/:".equals(lastWord) || "*:".equals(lastWord))) {
-                        Tokens.writeToken(lastWord);
+                        tokens.tokenize(lastWord, last[0], last[1]);
                         System.out.println(lastWord);
                         lastWord = ""; // se cambia a una palabra nueva
                     }
                     break;
                 case ':':
                     if (!("+".equals(lastWord) || "-".equals(lastWord) || "/".equals(lastWord) || "*".equals(lastWord))) {
-                        Tokens.writeToken(lastWord);
+                        tokens.tokenize(lastWord, last[0], last[1]);
                         System.out.println(lastWord);
                         lastWord = ""; // se cambia a una palabra nueva
                     }
                     break;
                 case '!':
-                    Tokens.writeToken(lastWord);
+                    tokens.tokenize(lastWord, last[0], last[1]);
                     System.out.println(lastWord);
                     lastWord = ""; // se cambia a una palabra nueva
                     break;
                 case ' ':
-                    Tokens.writeToken(lastWord);
+                    tokens.tokenize(lastWord, last[0], last[1]);
                     System.out.println(lastWord);
                     lastWord = ""; // se cambia a una palabra nueva
                     break;
                 case '>':
-                    Tokens.writeToken(lastWord);
+                    tokens.tokenize(lastWord, last[0], last[1]);
                     System.out.println(lastWord);
                     lastWord = ""; // se cambia a una palabra nueva
                     break;
                 case '<':
-                    Tokens.writeToken(lastWord);
+                    tokens.tokenize(lastWord, last[0], last[1]);
                     System.out.println(lastWord);
                     lastWord = ""; // se cambia a una palabra nueva
                     break;
                 case ',':
-                    Tokens.writeToken(lastWord);
+                    tokens.tokenize(lastWord, last[0], last[1]);
                     System.out.println(lastWord);
                     lastWord = ""; // se cambia a una palabra nueva
                     break;
                 case ';':
-                    Tokens.writeToken(lastWord);
+                    tokens.tokenize(lastWord, last[0], last[1]);
                     System.out.println(lastWord);
                     lastWord = ""; // se cambia a una palabra nueva
                     break;
