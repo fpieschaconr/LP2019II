@@ -82,7 +82,8 @@ class LexicAnalizer {
             current = nextCharacter(test);
             //el análisis léxico se debe hacer en esta parte del código
             //if( )
-            if (last[1] == 0) {
+            if (position[1] == 0) {
+                tokens.tokenize(lastWord.trim(), last[0], last[1]);
                 System.out.println(lastWord.trim());
                 lastWord = ""; //se cambia a una palabra nueva
             } else if (!lastWord.contains("\"") || lastWord.matches("\"(\\w|\\W)*\"")) {

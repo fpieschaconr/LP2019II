@@ -44,10 +44,10 @@ class Tokens {
         }
     }
 
-    void tokenize(String value, int row, int column) {
+    void tokenize(String value, int row, int column) { //genera el token correspondiente al valor dado
         if (value.equals("")) return;
         row++;
-        column++;
+        column -= value.length() - 1;
         String temp;
         if (value.equals("error")) {
             temp = ">>> Error lexico(linea:" + row + ",posicion:" + column + ")";
@@ -61,7 +61,7 @@ class Tokens {
             for (String token : TOKENS) {
                 String[] temp2 = token.split("#;#");
                 if (value.matches(temp2[0])) {
-                    if (temp2[1].equals("tk_num")) {
+                    if (temp2[1].equals("tk_num") || temp2[1].equals("tk_cadena")) {
                         temp = "<" + temp2[1] + "," + value + "," + row + "," + column + ">";
                         writeToken(temp);
                     } else {
