@@ -49,11 +49,7 @@ class Tokens {
         row++;
         column -= value.length() - 1;
         String temp;
-        if (value.equals("error")) {
-            temp = ">>> Error lexico(linea:" + row + ",posicion:" + column + ")";
-            writeToken(temp);
-            return;
-        }
+        
         if (RESERVED.contains(value)) {
             temp = "<" + value + "," + row + "," + column + ">";
             writeToken(temp);
@@ -71,8 +67,14 @@ class Tokens {
                     return;
                 }
             }
-            temp = "<id," + value + "," + row + "," + column + ">";
+            if (value.matches("[a-z][a-z0-9]*")) {
+                    temp = "<id," + value + "," + row + "," + column + ">";
+                    writeToken(temp);
+                    return;
+            }
+            temp = ">>> Error lexico(linea:" + row + ",posicion:" + column + ")";
             writeToken(temp);
+            return;
         }
     }
 }
