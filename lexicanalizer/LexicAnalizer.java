@@ -131,6 +131,12 @@ class LexicAnalizer {
                             lastWord = ""; //se cambia a una palabra nueva
                         }
                         break;
+                    default:
+                        if (lastWord.matches("\\(")) {
+                            tokens.tokenize(lastWord.trim(), last[0], last[1]);
+                            lastWord = "";
+                        }
+                        break;
                 }
             }
             //falta agregar casos para los número o las variables en caso de que separen una palabra o los casos en que sea to do parte de un string dentro del programa

@@ -15,13 +15,15 @@
 <body,8,1>
 <id,sizes,8,6>
 <getarg,9,4>
-<id,(1,9,10>
+<tk_par_izq,9,10>
+<tk_num,1,9,11>
 <tk_coma,9,12>
 <id,N,9,14>
 <tk_par_der,9,15>
 <tk_punto_y_coma,9,16>
 <getarg,9,18>
-<id,(2,9,24>
+<tk_par_izq,9,24>
+<tk_num,2,9,25>
 <tk_coma,9,26>
 <id,PR,9,28>
 <tk_par_der,9,30>
@@ -43,7 +45,8 @@
 <tk_par_der,11,40>
 <tk_punto_y_coma,11,41>
 <stop,11,43>
-<id,(1,11,48>
+<tk_par_izq,11,48>
+<tk_num,1,11,49>
 <tk_par_der,11,50>
 <fi,12,4>
 <id,en,13,1>
