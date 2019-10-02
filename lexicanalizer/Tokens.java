@@ -67,7 +67,7 @@ class Tokens {
                     return;
                 }
             }
-            if (value.matches("[a-z][a-z0-9]*")) {
+            if (value.matches("^[a-zA-z][a-zA-Z0-9_]*")) {
                     temp = "<id," + value + "," + row + "," + column + ">";
                     writeToken(temp);
                     return;
