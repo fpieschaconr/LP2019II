@@ -44,40 +44,38 @@ class Tokens {
         }
     }
 
-    boolean tokenize(String value, int row, int column) { //genera el token correspondiente al valor dado
-        if (value.equals("")) return true;
+    boolean tokenize (String value, int row, int column) { //genera el token correspondiente al valor dado
+        if (value.equals("")) return false;
         row++;
-        column -= value.length() - 1;
+        int col = column - value.length() + 1;
         String temp;
         
-        if (RESERVED.contains(value))
-        {
-            temp = "<" + value + "," + row + "," + column + ">";
+        if (RESERVED.contains(value)) {
+            temp = "<" + value + "," + row + "," + col + ">";
             writeToken(temp);
-        }
-        else {
+        } else {
             for (String token : TOKENS) {
                 String[] temp2 = token.split("#;#");
                 if (value.matches(temp2[0])) {
                     if (temp2[1].equals("tk_num") || temp2[1].equals("tk_cadena")) {
-                        temp = "<" + temp2[1] + "," + value + "," + row + "," + column + ">";
+                        temp = "<" + temp2[1] + "," + value + "," + row + "," + col + ">";
                         writeToken(temp);
                     } else {
-                        temp = "<" + temp2[1] + "," + row + "," + column + ">";
+                        temp = "<" + temp2[1] + "," + row + "," + col + ">";
                         writeToken(temp);
                     }
-                    return true;
+                    return false;
                 }
             }
-            if (value.matches("^[a-zA-z][a-zA-Z0-9_]*")) {
-                temp = "<id," + value + "," + row + "," + column + ">";
-                writeToken(temp);
-                return true;
+            if (value.matches("^[a-zA-Z][\\w_\\d]*$")) {
+                    temp = "<id," + value + "," + row + "," + col + ">";
+                    writeToken(temp);
+                    return false;
             }
-            temp = ">>> Error lexico(linea:" + row + ",posicion:" + column + ")";
+            temp = ">>> Error lexico(linea:" + row + ",posicion:" + col + ")";
             writeToken(temp);
-            return false;
+            return true;
         }
-    return false;
+        return false;
     }
 }
