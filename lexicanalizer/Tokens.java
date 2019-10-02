@@ -44,16 +44,18 @@ class Tokens {
         }
     }
 
-    void tokenize(String value, int row, int column) { //genera el token correspondiente al valor dado
-        if (value.equals("")) return;
+    boolean tokenize(String value, int row, int column) { //genera el token correspondiente al valor dado
+        if (value.equals("")) return true;
         row++;
         column -= value.length() - 1;
         String temp;
         
-        if (RESERVED.contains(value)) {
+        if (RESERVED.contains(value))
+        {
             temp = "<" + value + "," + row + "," + column + ">";
             writeToken(temp);
-        } else {
+        }
+        else {
             for (String token : TOKENS) {
                 String[] temp2 = token.split("#;#");
                 if (value.matches(temp2[0])) {
@@ -64,17 +66,18 @@ class Tokens {
                         temp = "<" + temp2[1] + "," + row + "," + column + ">";
                         writeToken(temp);
                     }
-                    return;
+                    return true;
                 }
             }
             if (value.matches("^[a-zA-z][a-zA-Z0-9_]*")) {
-                    temp = "<id," + value + "," + row + "," + column + ">";
-                    writeToken(temp);
-                    return;
+                temp = "<id," + value + "," + row + "," + column + ">";
+                writeToken(temp);
+                return true;
             }
             temp = ">>> Error lexico(linea:" + row + ",posicion:" + column + ")";
             writeToken(temp);
-            return;
+            return false;
         }
+    return false;
     }
 }
