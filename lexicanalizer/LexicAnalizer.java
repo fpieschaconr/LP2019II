@@ -91,6 +91,8 @@ class LexicAnalizer {
                     case '+':
                     case ')':
                     case '(':
+                    case ']':
+                    case '[':
                     case ';':
                     case ',':
                     case '<':
@@ -132,7 +134,7 @@ class LexicAnalizer {
                         }
                         break;
                     default:
-                        if (lastWord.matches("\\(")) {
+                        if (lastWord.matches("\\(")||lastWord.matches("\\[")||lastWord.matches("\\/")) {
                             tokens.tokenize(lastWord.trim(), last[0], last[1]);
                             lastWord = "";
                         }
