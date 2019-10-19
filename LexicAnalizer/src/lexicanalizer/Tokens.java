@@ -45,9 +45,9 @@ class Tokens {
     }
 
     boolean tokenize (String value, int row, int column) { //genera el token correspondiente al valor dado
-        if (value.equals("")) return false;
+        if (value.equals("")||value.matches("\\s*")) return false;
         row++;
-        int col = column - value.length() + 1;
+        int col = column;
         String temp;
         
         if (RESERVED.contains(value)) {
