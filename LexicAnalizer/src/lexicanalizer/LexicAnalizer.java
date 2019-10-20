@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
+@SuppressWarnings("StringConcatenationInLoop")
 public class LexicAnalizer {
-    static private int[] position ={0,0}; //0: row 1:column
-    static private int[] last ={0,0}; //sobre esta pocision se hacen los analisis
-    static String lastWord = "";
-    static int lastR=1, lastC=1;
+    static private final int[] position ={0,0}; //0: row 1:column
+    static private final int[] last ={0,0}; //sobre esta pocision se hacen los analisis
+    private static String lastWord = "";
+    private static int lastR=1;
+    private static int lastC=1;
     
-    static String trimEnd(String str){
+    private static String trimEnd(String str){
         char [] temp=str.toCharArray();
         int i=str.length()-1;
         for(; i>=0; i--){
@@ -21,13 +23,12 @@ public class LexicAnalizer {
             }
         }
         char [] newStr=new char[i+1];
-        for(int j=0;j<=i;j++)
-            newStr[j]=temp[j];
+        System.arraycopy(temp, 0, newStr, 0, i + 1);
         return new String(newStr);
     }
     
-    static ArrayList<String> splitLines(String code){ //retorna una lista de lineas de código separada por saltos de linea
-        ArrayList<String> temp=new ArrayList();
+    private static ArrayList<String> splitLines(String code){ //retorna una lista de lineas de código separada por saltos de linea
+        ArrayList temp=new ArrayList();
         String[] charArray=code.split("\\n");
         for(String a: charArray){
             temp.add(trimEnd(a.replace("\t", "   ")));
@@ -35,11 +36,11 @@ public class LexicAnalizer {
         return temp;
     }
     
-    static boolean hasNextChar(ArrayList<String> fracCode){
+    private static boolean hasNextChar(ArrayList<String> fracCode){
         return position[0]<fracCode.size();
     }
     
-    static char nextCharacter(ArrayList<String> fracCode){
+    private static char nextCharacter(ArrayList<String> fracCode){
         char next;
         if(fracCode.get(position[0]).length()>0){
             next = fracCode.get(position[0]).charAt(position[1]);
@@ -64,6 +65,7 @@ public class LexicAnalizer {
         return next;
     }
     
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public static void main(String[] args) throws IOException {
         lastWord = ""; //almacena la última palabra revisada con fines de saber que tipo de token es
         char current;

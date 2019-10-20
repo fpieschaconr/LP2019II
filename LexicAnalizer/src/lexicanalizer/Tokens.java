@@ -37,11 +37,10 @@ class Tokens {
     boolean tokenize (String value, int row, int column) { //genera el token correspondiente al valor dado
         if (value.equals("")||value.matches("\\s*")) return false;
         row++;
-        int col = column;
         String temp;
         
         if (RESERVED.contains(value)) {
-            temp = "<" + value + "," + row + "," + col + ">";
+            temp = "<" + value + "," + row + "," + column + ">";
             writeToken(temp);
         } else {
             for (String token : TOKENS) {
@@ -51,21 +50,21 @@ class Tokens {
                 temp2[0]= st.nextToken();//regex
                 if (value.matches(temp2[0])) {
                     if (temp2[1].equals("tk_num") || temp2[1].equals("tk_cadena")) {
-                        temp = "<" + temp2[1] + "," + value + "," + row + "," + col + ">";
+                        temp = "<" + temp2[1] + "," + value + "," + row + "," + column + ">";
                         writeToken(temp);
                     } else {
-                        temp = "<" + temp2[1] + "," + row + "," + col + ">";
+                        temp = "<" + temp2[1] + "," + row + "," + column + ">";
                         writeToken(temp);
                     }
                     return false;
                 }
             }
             if (value.matches("^[a-zA-Z][\\w_\\d]*$")) {
-                    temp = "<id," + value + "," + row + "," + col + ">";
+                    temp = "<id," + value + "," + row + "," + column + ">";
                     writeToken(temp);
                     return false;
             }
-            temp = ">>> Error lexico(linea:" + row + ",posicion:" + col + ")";
+            temp = ">>> Error lexico(linea:" + row + ",posicion:" + column + ")";
             writeToken(temp);
             return true;
         }

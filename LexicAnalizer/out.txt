@@ -350,7 +350,7 @@
 <var,64,4>
 <id,c,64,8>
 <tk_cor_izq,64,9>
-<id,false,64,10>
+<false,64,10>
 <tk_dos_puntos,64,15>
 <true,64,16>
 <tk_cor_der,64,20>
@@ -359,7 +359,7 @@
 <type,65,4>
 <id,t,65,9>
 <tk_igual,65,11>
-<id,rec,65,13>
+<rec,65,13>
 <tk_par_izq,65,16>
 <id,a,65,18>
 <tk_coma,65,19>
@@ -608,7 +608,7 @@
 <id,n0,116,6>
 <tk_par_izq,116,8>
 <tk_par_der,116,9>
-<id,separate,116,11>
+<separate,116,11>
 <resource,117,1>
 <id,n1,117,10>
 <tk_par_izq,117,12>
