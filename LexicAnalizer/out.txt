@@ -23,7 +23,7 @@
 <id,d,7,15>
 <tk_par_der,7,16>
 <id,c,8,5>
-<tk_cambio,8,7>
+<tk_swap,8,7>
 <id,d,8,11>
 <write,9,5>
 <tk_par_izq,9,11>
@@ -32,7 +32,7 @@
 <id,d,9,15>
 <tk_par_der,9,16>
 <id,d,10,5>
-<tk_cambio,10,7>
+<tk_swap,10,7>
 <id,c,10,11>
 <write,11,5>
 <tk_par_izq,11,11>
@@ -43,7 +43,7 @@
 <write,12,5>
 <tk_par_izq,12,11>
 <id,c,12,12>
-<tk_cambio,12,14>
+<tk_swap,12,14>
 <id,d,12,18>
 <tk_par_der,12,19>
 <procedure,14,5>
@@ -189,7 +189,7 @@
 <tk_par_izq,26,10>
 <tk_par_der,26,11>
 <id,a,28,5>
-<tk_cambio,28,7>
+<tk_swap,28,7>
 <id,b,28,11>
 <id,adump,29,5>
 <tk_par_izq,29,11>
@@ -205,13 +205,13 @@
 <id,adump,33,5>
 <tk_par_izq,33,11>
 <id,b,33,12>
-<tk_cambio,33,14>
+<tk_swap,33,14>
 <id,a,33,18>
 <tk_par_der,33,19>
 <id,adump,34,5>
 <tk_par_izq,34,11>
 <id,b,34,12>
-<tk_cambio,34,14>
+<tk_swap,34,14>
 <id,a,34,18>
 <tk_par_der,34,19>
 <write,35,5>
@@ -303,7 +303,7 @@
 <tk_par_der,52,34>
 <od,53,4>
 <id,a,54,4>
-<tk_cambio,54,6>
+<tk_swap,54,6>
 <id,c,54,10>
 <write,55,4>
 <tk_par_izq,55,9>
@@ -386,7 +386,7 @@
 <tk_cor_der,68,10>
 <tk_asig,68,12>
 <id,i,68,15>
-<tk_module,68,17>
+<tk_remainder,68,17>
 <tk_num,2,68,19>
 <tk_igual,68,21>
 <tk_num,0,68,23>
@@ -514,7 +514,7 @@
 <id,s3,96,23>
 <tk_par_der,96,25>
 <id,s1,97,5>
-<tk_cambio,97,8>
+<tk_swap,97,8>
 <id,s2,97,12>
 <write,98,5>
 <tk_par_izq,98,10>
@@ -665,8 +665,7 @@
 <tk_num,0,128,17>
 <tk_ejecuta,128,19>
 <id,a,129,13>
-<tk_menos,129,14>
-<tk_menos,129,15>
+<tk_decrement,129,14>
 <tk_cor_izq,130,10>
 <tk_cor_der,130,11>
 <id,a,130,13>
@@ -707,4 +706,4 @@
 <end,145,1>
 <body,146,1>
 <id,n0,146,6>
-<end,147,1>
+<end,147,0>
