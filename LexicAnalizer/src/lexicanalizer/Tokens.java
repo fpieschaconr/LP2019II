@@ -1,9 +1,10 @@
-package lexicanalizer;
+package LexicAnalizer.src.lexicanalizer;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.List;
+import java.util.StringTokenizer;
 
 class Tokens {
 
@@ -11,31 +12,20 @@ class Tokens {
     private List<String> TOKENS; //tokens de simbolos generales lenguaje SR
 
     Tokens() throws IOException {
-        File file = new File("RESERVED.txt");
-        FileInputStream fis = new FileInputStream(file);
-        byte[] data = new byte[(int) file.length()];
-        //noinspection ResultOfMethodCallIgnored
-        fis.read(data);
-        fis.close();
-        String str = new String(data, StandardCharsets.UTF_8);
-        this.RESERVED = Arrays.asList(str.split("##"));
+        File file = new File("LexicAnalizer/RESERVED.txt");
+        this.RESERVED = Files.readAllLines(file.toPath(), Charset.defaultCharset());
 
-        file = new File("TOKENS.txt");
-        fis = new FileInputStream(file);
-        data = new byte[(int) file.length()];
-        fis.read(data);
-        fis.close();
-        str = new String(data, StandardCharsets.UTF_8);
-        this.TOKENS = Arrays.asList(str.split("##"));
+        file = new File("LexicAnalizer/TOKENS.txt");
+        this.TOKENS = Files.readAllLines(file.toPath(), Charset.defaultCharset());
     }
 
     void clearOutput() throws FileNotFoundException //limpia el out.txt
     {
-        new PrintWriter("out.txt").close();
+        new PrintWriter("LexicAnalizer/out.txt").close();
     }
 
     private void writeToken(String token) {
-        try (FileWriter fw = new FileWriter(new File("out.txt").getAbsoluteFile(), true)) //escribe en out.txt sin alterar lo anterior, pasa a siguiente linea
+        try (FileWriter fw = new FileWriter(new File("LexicAnalizer/out.txt").getAbsoluteFile(), true)) //escribe en out.txt sin alterar lo anterior, pasa a siguiente linea
         {
             fw.write(token);
             fw.write("\n");
@@ -55,7 +45,10 @@ class Tokens {
             writeToken(temp);
         } else {
             for (String token : TOKENS) {
-                String[] temp2 = token.split("#;#");
+                StringTokenizer st = new StringTokenizer(token);
+                String[] temp2 = new String[2];
+                temp2[1]= st.nextToken();//token
+                temp2[0]= st.nextToken();//regex
                 if (value.matches(temp2[0])) {
                     if (temp2[1].equals("tk_num") || temp2[1].equals("tk_cadena")) {
                         temp = "<" + temp2[1] + "," + value + "," + row + "," + col + ">";

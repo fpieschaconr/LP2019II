@@ -1,4 +1,4 @@
-package lexicanalizer;
+package LexicAnalizer.src.lexicanalizer;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,8 +7,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class LexicAnalizer {
-    static private int position[]={0,0}; //0: row 1:column
-    static private int last[]={0,0}; //sobre esta pocision se hacen los analisis
+    static private int[] position ={0,0}; //0: row 1:column
+    static private int[] last ={0,0}; //sobre esta pocision se hacen los analisis
     static String lastWord = "";
     static int lastR=1, lastC=1;
     
@@ -68,7 +68,7 @@ public class LexicAnalizer {
         lastWord = ""; //almacena la última palabra revisada con fines de saber que tipo de token es
         char current;
 
-        File file = new File("in.txt");
+        File file = new File("LexicAnalizer/in.txt");
         FileInputStream fis = new FileInputStream(file);
         byte[] data = new byte[(int) file.length()];
         fis.read(data);
