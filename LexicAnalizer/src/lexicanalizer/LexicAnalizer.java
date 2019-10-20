@@ -6,15 +6,13 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-@SuppressWarnings("StringConcatenationInLoop")
 public class LexicAnalizer {
-    static private final int[] position ={0,0}; //0: row 1:column
-    static private final int[] last ={0,0}; //sobre esta pocision se hacen los analisis
-    private static String lastWord = "";
-    private static int lastR=1;
-    private static int lastC=1;
+    static private int[] position ={0,0}; //0: row 1:column
+    static private int[] last ={0,0}; //sobre esta pocision se hacen los analisis
+    static String lastWord = "";
+    static int lastR=1, lastC=1;
     
-    private static String trimEnd(String str){
+    static String trimEnd(String str){
         char [] temp=str.toCharArray();
         int i=str.length()-1;
         for(; i>=0; i--){
@@ -23,12 +21,13 @@ public class LexicAnalizer {
             }
         }
         char [] newStr=new char[i+1];
-        System.arraycopy(temp, 0, newStr, 0, i + 1);
+        for(int j=0;j<=i;j++)
+            newStr[j]=temp[j];
         return new String(newStr);
     }
     
-    private static ArrayList<String> splitLines(String code){ //retorna una lista de lineas de código separada por saltos de linea
-        ArrayList temp=new ArrayList();
+    static ArrayList<String> splitLines(String code){ //retorna una lista de lineas de código separada por saltos de linea
+        ArrayList<String> temp=new ArrayList();
         String[] charArray=code.split("\\n");
         for(String a: charArray){
             temp.add(trimEnd(a.replace("\t", "   ")));
@@ -36,11 +35,11 @@ public class LexicAnalizer {
         return temp;
     }
     
-    private static boolean hasNextChar(ArrayList<String> fracCode){
+    static boolean hasNextChar(ArrayList<String> fracCode){
         return position[0]<fracCode.size();
     }
     
-    private static char nextCharacter(ArrayList<String> fracCode){
+    static char nextCharacter(ArrayList<String> fracCode){
         char next;
         if(fracCode.get(position[0]).length()>0){
             next = fracCode.get(position[0]).charAt(position[1]);
@@ -65,7 +64,6 @@ public class LexicAnalizer {
         return next;
     }
     
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     public static void main(String[] args) throws IOException {
         lastWord = ""; //almacena la última palabra revisada con fines de saber que tipo de token es
         char current;
@@ -92,6 +90,9 @@ public class LexicAnalizer {
             if(position[1]==0){
                 lastR=last[0];
                 lastC=last[1];
+                if(!hasNextChar(test)){
+                    lastWord+=current;
+                }
                 error = tokens.tokenize(lastWord.trim(), lastR, lastC-lastWord.length()+1);
                 System.out.println(lastWord.trim());
                 lastWord = "";
@@ -105,7 +106,7 @@ public class LexicAnalizer {
                 error = tokens.tokenize(lastWord.trim(), lastR, lastC);
                 System.out.println(lastWord.trim());
                 lastWord = ""; //se cambia a una palabra nueva
-            }else if((("+".equals(lastWord.trim()) && current!='+') || ("-".equals(lastWord.trim()) && (!(temp.matches("\\d") || current!='-'))) || "/".equals(lastWord.trim()) || "*".equals(lastWord.trim())) && current != ':' && current != '>'){
+            }else if((("+".equals(lastWord.trim()) && current!='+') || ("-".equals(lastWord.trim()) && (!(temp.matches("\\d") || current!='-' || current != '>'))) || "/".equals(lastWord.trim()) || ("*".equals(lastWord.trim())&&current!='*')|| "**".equals(lastWord.trim())|| ">>".equals(lastWord.trim())|| "<<".equals(lastWord.trim())|| ("|".equals(lastWord.trim()) && current!='|')|| "||".equals(lastWord.trim())|| "&".equals(lastWord.trim())|| "%".equals(lastWord.trim())) && current != ':'){
                 error = tokens.tokenize(lastWord.trim(), lastR, lastC);
                 System.out.println(lastWord.trim());
                 lastWord = ""; //se cambia a una palabra nueva
@@ -115,19 +116,51 @@ public class LexicAnalizer {
                     case '(':
                     case '[':
                     case ']':
+                    case '{':
+                    case '}':
                     case ';':
                     case ',':
-                    case '<':
                     case ' ':
                     case '!':
-                    case '*':
                     case '/':
+                    case '&':
+                    case '?':
+                    case '@':
+                    case '^':
                         error = tokens.tokenize(lastWord.trim(), lastR, lastC);
                         System.out.println(lastWord.trim());
                         lastWord = ""; //se cambia a una palabra nueva
                         break;
                     case '-':
                         if (!lastWord.trim().equals("-")) {
+                            error = tokens.tokenize(lastWord.trim(), lastR, lastC);
+                            System.out.println(lastWord.trim());
+                            lastWord = "";
+                        }
+                        break;
+                    case '<':
+                        if (!lastWord.trim().equals("<")) {
+                            error = tokens.tokenize(lastWord.trim(), lastR, lastC);
+                            System.out.println(lastWord.trim());
+                            lastWord = "";
+                        }
+                        break;
+                    case '>':
+                        if (!("-".equals(lastWord.trim())||">".equals(lastWord.trim()))) {
+                            error = tokens.tokenize(lastWord.trim(), lastR, lastC);
+                            System.out.println(lastWord.trim());
+                            lastWord = ""; //se cambia a una palabra nueva
+                        }
+                        break;
+                    case '|':
+                        if (!lastWord.trim().equals("|")) {
+                            error = tokens.tokenize(lastWord.trim(), lastR, lastC);
+                            System.out.println(lastWord.trim());
+                            lastWord = "";
+                        }
+                        break;
+                    case '*':
+                        if (!lastWord.trim().equals("*")) {
                             error = tokens.tokenize(lastWord.trim(), lastR, lastC);
                             System.out.println(lastWord.trim());
                             lastWord = "";
@@ -141,7 +174,7 @@ public class LexicAnalizer {
                         }
                         break;
                     case '=':
-                        if (!(lastWord.trim().equals("!") || lastWord.trim().equals("=") || lastWord.trim().equals(":") || lastWord.trim().equals(">") || lastWord.trim().equals("<") || "+:".equals(lastWord.trim()) || "-:".equals(lastWord.trim()) || "/:".equals(lastWord.trim()) || "*:".equals(lastWord.trim()))) {
+                        if (!(lastWord.trim().equals("!") || lastWord.trim().equals("=") || lastWord.trim().equals(":") || lastWord.trim().equals(">") || lastWord.trim().equals("<")|| lastWord.trim().equals(">>:") || lastWord.trim().equals("<<:") || "+:".equals(lastWord.trim()) || "-:".equals(lastWord.trim()) || "/:".equals(lastWord.trim()) || "*:".equals(lastWord.trim())|| "**:".equals(lastWord.trim())|| "%:".equals(lastWord.trim())|| "|:".equals(lastWord.trim())|| "||:".equals(lastWord.trim())|| "&:".equals(lastWord.trim()))) {
                             error = tokens.tokenize(lastWord.trim(), lastR, lastC);
                             System.out.println(lastWord.trim());
                             lastWord = ""; //se cambia a una palabra nueva
@@ -155,17 +188,10 @@ public class LexicAnalizer {
                         }
                         break;
                     case ':':
-                        if (!("+".equals(lastWord.trim()) || "-".equals(lastWord.trim()) || "/".equals(lastWord.trim()) || "*".equals(lastWord.trim())|| lastWord.trim().equals(":="))) {
+                        if (!("+".equals(lastWord.trim()) || "-".equals(lastWord.trim()) || "/".equals(lastWord.trim()) || "*".equals(lastWord.trim())|| "%".equals(lastWord.trim())|| lastWord.trim().equals(":=")|| "**".equals(lastWord.trim())|| ">>".equals(lastWord.trim())|| "<<".equals(lastWord.trim())|| "|".equals(lastWord.trim())|| "||".equals(lastWord.trim())|| "&".equals(lastWord.trim()))) {
                             error = tokens.tokenize(lastWord.trim(), lastR, lastC);
                             System.out.println(lastWord.trim());
                             lastWord = ""; //se cambia a una palabra nueva, tambien hay que hacer análisis en este punto
-                        }
-                        break;
-                    case '>':
-                        if (!"-".equals(lastWord.trim())) {
-                            error = tokens.tokenize(lastWord.trim(), lastR, lastC);
-                            System.out.println(lastWord.trim());
-                            lastWord = ""; //se cambia a una palabra nueva
                         }
                         break;
                     case '\"':
@@ -193,8 +219,6 @@ public class LexicAnalizer {
             }
         
     }
-        tokens.tokenize(lastWord.trim(), lastR, lastC);
-        System.out.println(lastWord.trim());
     
 }
 }
