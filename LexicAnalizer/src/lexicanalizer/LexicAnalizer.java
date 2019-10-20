@@ -92,6 +92,7 @@ public class LexicAnalizer {
                 lastC=last[1];
                 if(!hasNextChar(test)){
                     lastWord+=current;
+                    lastC++;
                 }
                 error = tokens.tokenize(lastWord.trim(), lastR, lastC-lastWord.length()+1);
                 System.out.println(lastWord.trim());
