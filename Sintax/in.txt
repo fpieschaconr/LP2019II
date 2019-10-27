@@ -144,5 +144,4 @@ resource n1()
 	end
 end
 body n0
-'a'
 end
