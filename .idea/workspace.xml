@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="8" />
+    <option name="CUSTOM_SCOPE_NAME" value="Selected Files" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="321e22c0-9eba-477b-abf8-e003c4fbcab9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/LexicAnalizer/TOKENS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/LexicAnalizer/TOKENS.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicAnalizer/in.txt" beforeDir="false" afterPath="$PROJECT_DIR$/LexicAnalizer/in.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicAnalizer/out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/LexicAnalizer/out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Palabras reservadas.pdf" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="ONTO" value="refs/remotes/origin/develop" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="fpieschaconr &lt;50886659+fpieschaconr@users.noreply.github.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\Felipe Pieschacon\LP2019II\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1RQTbLs0mr9bPgNG7LYtzlBH4YK" />
+  <component name="PropertiesComponent">
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Felipe Pieschacon\LP2019II" />
+      <recent name="C:\Users\Felipe Pieschacon\LP2019II\lexicanalizer" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="LexicAnalizer (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="LexicAnalizer.src.lexicanalizer.LexicAnalizer" />
+      <module name="LP2019II" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="LexicAnalizer.src.lexicanalizer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.LexicAnalizer (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="321e22c0-9eba-477b-abf8-e003c4fbcab9" name="Default Changelist" comment="" />
+      <created>1569598389941</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1569598389941</updated>
+      <workItem from="1571586117612" duration="7473000" />
+    </task>
+    <task id="LOCAL-00001" summary=":construction:Added: file I/O, Token class&#10;Changed: some minor code cleanup">
+      <created>1569602784252</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1569602784252</updated>
+    </task>
+    <task id="LOCAL-00002" summary=":construction:Added: Tokens and reserved words files&#10;Modified: basic tokenizer working">
+      <created>1569612243075</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1569612243075</updated>
+    </task>
+    <task id="LOCAL-00003" summary=":construction: Modified: combined lexic spliter fixes">
+      <created>1569613290894</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1569613290894</updated>
+    </task>
+    <task id="LOCAL-00004" summary=":construction: Added: error handling at tokenizer">
+      <created>1569615287866</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1569615287866</updated>
+    </task>
+    <task id="LOCAL-00005" summary=":bug: minor bug fixes">
+      <created>1569619581496</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1569619581496</updated>
+    </task>
+    <task id="LOCAL-00006" summary=":bug: left parenthesis bug fix">
+      <created>1569896607727</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1569896607727</updated>
+    </task>
+    <task id="LOCAL-00007" summary=":poop: error stopping in tokens">
+      <created>1569976798387</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1569976798387</updated>
+    </task>
+    <task id="LOCAL-00008" summary=":art: Better reserved files input">
+      <created>1571588619053</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1571588619053</updated>
+    </task>
+    <task id="LOCAL-00009" summary=":art: Added literal symbols">
+      <created>1571589182776</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1571589182776</updated>
+    </task>
+    <task id="LOCAL-00010" summary=":art: more reserved words and minor improvements">
+      <created>1571590477647</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1571590477647</updated>
+    </task>
+    <task id="LOCAL-00011" summary=":art: more tokens added and lexic analizer changes">
+      <created>1571591966803</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1571591966803</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value=":construction:Added: file I/O, Token class&#10;Changed: some minor code cleanup" />
+    <MESSAGE value=":construction:Added: Tokens and reserved words files&#10;Modified: basic tokenizer working" />
+    <MESSAGE value=":construction: Modified: combined lexic spliter fixes" />
+    <MESSAGE value=":construction: Added: error handling at tokenizer" />
+    <MESSAGE value=":bug: minor bug fixes" />
+    <MESSAGE value=":bug: left parenthesis bug fix" />
+    <MESSAGE value=":poop: error stopping in tokens" />
+    <MESSAGE value=":art: Better reserved files input" />
+    <MESSAGE value=":art: Added literal symbols" />
+    <MESSAGE value=":art: more reserved words and minor improvements" />
+    <MESSAGE value=":art: more tokens added and lexic analizer changes" />
+    <option name="LAST_COMMIT_MESSAGE" value=":art: more tokens added and lexic analizer changes" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+</project>
