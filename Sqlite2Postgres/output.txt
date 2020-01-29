@@ -1,0 +1,4 @@
+-- Generated postgreSQL file from SQLite
+-- Final ANTLRv4 Project LP 2019-II
+-- By Tom Erick Perez, Felipe Pieschacon and Juan Nicolas Nobsa
+
