@@ -195,7 +195,7 @@ insert_stmt
    | K_DEFAULT K_VALUES
    )
  ;
-
+//no existe implementación equivalente en ningún otro motor de base de datos
 pragma_stmt
  : K_PRAGMA ( database_name '.' )? pragma_name ( '=' pragma_value
                                                | '(' pragma_value ')' )?

@@ -17,6 +17,10 @@ public class Listener extends SqliteBaseListener {
     private static String file = "output.txt";
     //en esta variable se van a guardar los esquemas de la base de datos puesto que la gramtaica no distingue tablas y esquemas
     private static ArrayList<String> databases = new ArrayList<>();
+    private static ArrayList<String> tables = new ArrayList<>();
+    private static ArrayList<String> indexes = new ArrayList<>();
+    //en esta se guardan los tres tipos de collation de sqlite
+    private static final String[] collations={"binary", "rtrim", "nocase"};
 
     private static void escribirTraduccion(String file) {
         String str = "";
@@ -104,6 +108,12 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+    public void exitCreate_index_stmt(SqliteParser.Create_index_stmtContext ctx) {
+        indexes.add(ctx.index_name().getText());
+        super.exitCreate_index_stmt(ctx);
+    }
+
+    @Override
     public void enterDetach_stmt(SqliteParser.Detach_stmtContext ctx) {
         String a = "DROP SCHEMA";
         System.out.print(a);
@@ -129,6 +139,7 @@ public class Listener extends SqliteBaseListener {
         String a = ";\n";
         System.out.print(a);
         traduccion += a;
+        indexes.remove(ctx.index_name().getText());
         super.exitDrop_index_stmt(ctx);
     }
 
@@ -172,6 +183,32 @@ public class Listener extends SqliteBaseListener {
         System.out.print(a);
         traduccion += a;
         super.exitDrop_view_stmt(ctx);
+    }
+
+    @Override
+    public void enterReindex_stmt(SqliteParser.Reindex_stmtContext ctx) {
+        String a = "REINDEX";
+        if(ctx.getChildCount()==1){
+            a += " DATABASE public;\n";
+            for(String db: databases){
+                if(!db.equals("main")){
+                    a += "REINDEX DATABASE " + db + ";\n";
+                }
+            }
+        }
+        System.out.print(a);
+        traduccion += a;
+        super.enterReindex_stmt(ctx);
+    }
+
+    @Override
+    public void exitReindex_stmt(SqliteParser.Reindex_stmtContext ctx) {
+        String a = "";
+        if(ctx.getChildCount()>2)
+            a = ";\n";
+        System.out.print(a);
+        traduccion += a;
+        super.exitReindex_stmt(ctx);
     }
 
     @Override
@@ -242,6 +279,15 @@ public class Listener extends SqliteBaseListener {
     @Override
     public void enterCollation_name(SqliteParser.Collation_nameContext ctx) {
         String a = " " + ctx.start.getText();
+        if(ctx.getParent().getText().toLowerCase().contains("reindex")){
+            if(collations[0].equals(ctx.getText()) || collations[1].equals(ctx.getText()) || collations[2].equals(ctx.getText())){
+                a=" DATABASE public;\n";
+            }else if(indexes.contains(ctx.getText())){
+                a=" INDEX " + ctx.getText() + ";\n";
+            }else{
+                a=" TABLE " + ctx.getText() + ";\n";
+            }
+        }
         System.out.print(a);
         traduccion += a;
         super.enterCollation_name(ctx);
@@ -282,10 +328,17 @@ public class Listener extends SqliteBaseListener {
                 a = " " + ctx.getText() + ";\n";
             }
         }else if(ctx.getParent().getText().contains(".")){
+            if(ctx.getParent().getText().substring(0, 7).toLowerCase().equals("reindex")){
+                if(indexes.contains(ctx.getParent().stop.getText())){
+                    a=" INDEX";
+                }else{
+                    a=" TABLE";
+                }
+            }
             if(ctx.getText().toLowerCase().equals("main")){
-                a = " public.";
+                a += " public.";
             }else{
-                a = " " + ctx.getText() + ".";
+                a += " " + ctx.getText() + ".";
             }
         }
         System.out.print(a);

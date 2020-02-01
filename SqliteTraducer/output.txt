@@ -22,4 +22,7 @@ DROP INDEX IF EXISTS public.indice;
  indice tablac1 COLLATE colacion asc, c2 desc, c3 COLLATE colar, c4 asc, c5, c6);
 DROP TABLE tabla RESTRICT;
 DROP VIEW IF EXISTS public.vista RESTRICT;
+REINDEX INDEX public.indice;
+REINDEX DATABASE public;
+REINDEX DATABASE temp;
 
