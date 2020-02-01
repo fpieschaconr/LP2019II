@@ -19,9 +19,6 @@ public class Listener extends SqliteBaseListener {
     private static ArrayList<String> databases = new ArrayList<>();
 
     private static void escribirTraduccion(String file) {
-        //los esquemas default que tiene SQLite
-        databases.add("main");
-        databases.add("temp");
         String str = "";
         str = "-- Generated postgreSQL file from SQLite\n-- Final ANTLRv4 Project LP 2019-II\n-- By Tom Erick Perez, Felipe Pieschacon and Juan Nicolas Nobza\n\n"+ System.lineSeparator() + traduccion ;
         crearArchivo(file,str);
@@ -43,12 +40,19 @@ public class Listener extends SqliteBaseListener {
     }
 
 
+    @Override
+    public void enterParse(SqliteParser.ParseContext ctx) {
+        //los esquemas default que tiene SQLite
+        databases.add("main");
+        databases.add("temp");
+        super.enterParse(ctx);
+    }
 
     @Override
     public void exitParse(SqliteParser.ParseContext ctx) {
         String a = ctx.getText();
         escribirTraduccion(file);
-        super.enterParse(ctx);
+        super.exitParse(ctx);
     }
 
     @Override
@@ -56,7 +60,6 @@ public class Listener extends SqliteBaseListener {
         String a = "ANALYZE VERBOSE";
         System.out.print(a);
         traduccion += a;
-        escribirTraduccion(file);
         super.enterAnalyze_stmt(ctx);
     }
 
@@ -65,7 +68,6 @@ public class Listener extends SqliteBaseListener {
         String a = "CREATE SCHEMA";
         System.out.print(a);
         traduccion += a;
-        escribirTraduccion(file);
         super.enterAttach_stmt(ctx);
     }
 
@@ -79,7 +81,6 @@ public class Listener extends SqliteBaseListener {
         }
         System.out.print(a);
         traduccion += a;
-        escribirTraduccion(file);
         super.enterBegin_stmt(ctx);
     }
 
@@ -99,7 +100,6 @@ public class Listener extends SqliteBaseListener {
         }
         System.out.print(a);
         traduccion += a;
-        escribirTraduccion(file);
         super.enterCommit_stmt(ctx);
     }
 
@@ -108,7 +108,6 @@ public class Listener extends SqliteBaseListener {
         String a = "DROP SCHEMA";
         System.out.print(a);
         traduccion += a;
-        escribirTraduccion(file);
         super.enterDetach_stmt(ctx);
     }
 
@@ -120,7 +119,6 @@ public class Listener extends SqliteBaseListener {
         }
         System.out.print(a);
         traduccion += a;
-        escribirTraduccion(file);
         super.enterRelease_stmt(ctx);
     }
 
@@ -139,7 +137,6 @@ public class Listener extends SqliteBaseListener {
 
         System.out.print(a);
         traduccion += a;
-        escribirTraduccion(file);
         super.enterRollback_stmt(ctx);
     }
 
@@ -148,7 +145,6 @@ public class Listener extends SqliteBaseListener {
         String a = "SAVEPOINT";
         System.out.print(a);
         traduccion += a;
-        escribirTraduccion(file);
         super.enterSavepoint_stmt(ctx);
     }
 
@@ -160,7 +156,6 @@ public class Listener extends SqliteBaseListener {
         }
         System.out.println(a);
         traduccion += a;
-        escribirTraduccion(file);
         super.enterExpr(ctx);
     }
 
@@ -168,6 +163,9 @@ public class Listener extends SqliteBaseListener {
     public void enterDatabase_name(SqliteParser.Database_nameContext ctx) {
         String a = "";
         if(!ctx.getParent().getText().contains(".") && ctx.getParent().getText().substring(0, 7).toLowerCase().equals("analyze")){
+            for(String db:databases){
+                System.out.println("db: " + db);
+            }
             if(databases.contains(ctx.getText().toLowerCase())){
                 a = ";\n";
             }else{
@@ -185,7 +183,6 @@ public class Listener extends SqliteBaseListener {
         }
         System.out.print(a);
         traduccion += a;
-        escribirTraduccion(file);
         super.enterDatabase_name(ctx);
     }
 
@@ -208,7 +205,6 @@ public class Listener extends SqliteBaseListener {
 
         System.out.print(a);
         traduccion += a;
-        escribirTraduccion(file);
         super.enterSavepoint_name(ctx);
     }
 
@@ -217,7 +213,6 @@ public class Listener extends SqliteBaseListener {
         String a = ctx.getText() + ";\n";
         System.out.println(a+" tabla");
         traduccion += a;
-        escribirTraduccion(file);
         super.enterTable_or_index_name(ctx);
     }
 }
