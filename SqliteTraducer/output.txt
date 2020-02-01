@@ -1,0 +1,11 @@
+-- Generated postgreSQL file from SQLite
+-- Final ANTLRv4 Project LP 2019-II
+-- By Tom Erick Perez, Felipe Pieschacon and Juan Nicolas Nobza
+
+
+CREATE SCHEMA nuevo;
+DROP SCHEMA nuevo;
+ANALYZE VERBOSE nuevo.tabla;
+ANALYZE VERBOSE
+ANALYZE VERBOSE tabla;
+

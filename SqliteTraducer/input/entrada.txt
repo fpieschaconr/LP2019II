@@ -1,0 +1,6 @@
+
+attach database ":memory:" as nuevo;
+detach database nuevo;
+analyze nuevo.tabla;
+analyze main;
+analyze tabla;

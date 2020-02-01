@@ -1,4 +1,4 @@
-// Generated from C:/Users/Felipe Pieschacon/Desktop/LP2019II/Sqlite2Postgres/grammar\Sqlite.g4 by ANTLR 4.8
+package com.company;// Generated from C:/Users/57311/IdeaProjects/SqliteTraducer/grammar\Sqlite.g4 by ANTLR 4.8
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**

@@ -1,4 +1,4 @@
-// Generated from C:/Users/Felipe Pieschacon/Desktop/LP2019II/Sqlite2Postgres/grammar\Sqlite.g4 by ANTLR 4.8
+// Generated from C:/Users/57311/IdeaProjects/SqliteTraducer/grammar\Sqlite.g4 by ANTLR 4.8
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
