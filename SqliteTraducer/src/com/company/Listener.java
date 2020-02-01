@@ -112,6 +112,27 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+    public void enterDrop_index_stmt(SqliteParser.Drop_index_stmtContext ctx) {
+        String a = "DROP INDEX";
+        if(ctx.getChildCount()>=4){
+            if(ctx.getChild(2).getText().toLowerCase().equals("if") && ctx.getChild(3).getText().toLowerCase().equals("exists")){
+                a += " IF EXISTS";
+            }
+        }
+        System.out.print(a);
+        traduccion += a;
+        super.enterDrop_index_stmt(ctx);
+    }
+
+    @Override
+    public void exitDrop_index_stmt(SqliteParser.Drop_index_stmtContext ctx) {
+        String a = ";\n";
+        System.out.print(a);
+        traduccion += a;
+        super.exitDrop_index_stmt(ctx);
+    }
+
+    @Override
     public void enterRelease_stmt(SqliteParser.Release_stmtContext ctx) {
         String a = "RELEASE";
         if(ctx.getText().toLowerCase().contains("savepoint")){
@@ -177,9 +198,17 @@ public class Listener extends SqliteBaseListener {
             else
                 databases.add(ctx.getText().toLowerCase());
 
-            a = " " + ctx.getText() + ";\n";
+            if(ctx.getText().toLowerCase().equals("main")){
+                a = " public;\n";
+            }else{
+                a = " " + ctx.getText() + ";\n";
+            }
         }else if(ctx.getParent().getText().contains(".")){
-            a = " " + ctx.getText() + ".";
+            if(ctx.getText().toLowerCase().equals("main")){
+                a = " public.";
+            }else{
+                a = " " + ctx.getText() + ".";
+            }
         }
         System.out.print(a);
         traduccion += a;
@@ -194,6 +223,17 @@ public class Listener extends SqliteBaseListener {
         escribirTraduccion(file);
         super.exitDatabase_name(ctx);
     }*/
+
+    @Override
+    public void enterIndex_name(SqliteParser.Index_nameContext ctx) {
+        String a = ctx.start.getText();
+        if(!ctx.getParent().getText().contains(".")){
+            a = " " + ctx.start.getText();
+        }
+        System.out.println(a);
+        traduccion += a;
+        super.enterIndex_name(ctx);
+    }
 
     @Override
     public void enterSavepoint_name(SqliteParser.Savepoint_nameContext ctx)  {

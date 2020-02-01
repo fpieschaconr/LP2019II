@@ -1,7 +1,7 @@
 
 attach database ":memory:" as nuevo;
 detach database nuevo;
-analyze nuevo.tabla;
+analyze main.tabla;
 analyze main;
 analyze tabla;
 begin exclusive transaction y1;
@@ -14,3 +14,4 @@ rollback transaction to tom;
 rollback to tom;
 rollback transaction to savepoint tom;
 release savepoint tom;
+drop index if exists main.indice;
