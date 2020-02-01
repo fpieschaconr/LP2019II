@@ -69,15 +69,39 @@ public class Listener extends SqliteBaseListener {
         super.enterAttach_stmt(ctx);
     }
 
-    /*@Override
-    public void exitAttach_stmt(SqliteParser.Attach_stmtContext ctx) {
-        databases.add(ctx.stop.getText());
-        String a = " " + ctx.stop.getText() + ";\n";
+    @Override
+    public void enterBegin_stmt(SqliteParser.Begin_stmtContext ctx) {
+        String a = "BEGIN";
+        if(ctx.getText().toLowerCase().contains("transaction")) {
+            a += " TRANSACTION;\n";
+        }else{
+                a += ";\n";
+        }
         System.out.print(a);
         traduccion += a;
         escribirTraduccion(file);
-        super.exitAttach_stmt(ctx);
-    }*/
+        super.enterBegin_stmt(ctx);
+    }
+
+    @Override
+    public void enterCommit_stmt(SqliteParser.Commit_stmtContext ctx) {
+        String a = "";
+        if(ctx.getChild(0).getText().toLowerCase().equals("commit")){
+            a = "COMMIT";
+        }else{
+            a = "END";
+        }
+
+        if(ctx.getText().toLowerCase().contains("transaction")) {
+            a += " TRANSACTION;\n";
+        }else{
+            a += ";\n";
+        }
+        System.out.print(a);
+        traduccion += a;
+        escribirTraduccion(file);
+        super.enterCommit_stmt(ctx);
+    }
 
     @Override
     public void enterDetach_stmt(SqliteParser.Detach_stmtContext ctx) {
@@ -88,15 +112,45 @@ public class Listener extends SqliteBaseListener {
         super.enterDetach_stmt(ctx);
     }
 
-    /*@Override
-    public void exitDetach_stmt(SqliteParser.Detach_stmtContext ctx) {
-        databases.remove(ctx.stop.getText());
-        String a = " " + ctx.stop.getText() + ";\n";
+    @Override
+    public void enterRelease_stmt(SqliteParser.Release_stmtContext ctx) {
+        String a = "RELEASE";
+        if(ctx.getText().toLowerCase().contains("savepoint")){
+            a += " SAVEPOINT";
+        }
         System.out.print(a);
         traduccion += a;
         escribirTraduccion(file);
-        super.exitDetach_stmt(ctx);
-    }*/
+        super.enterRelease_stmt(ctx);
+    }
+
+    @Override
+    public void enterRollback_stmt(SqliteParser.Rollback_stmtContext ctx) {
+        String a = "ROLLBACK";
+        if(ctx.getText().toLowerCase().contains("transaction")){
+            a += " TRANSACTION";
+        }
+
+        if(ctx.getText().toLowerCase().contains("to")){
+            a += " TO ";
+        }else{
+            a += ";\n";
+        }
+
+        System.out.print(a);
+        traduccion += a;
+        escribirTraduccion(file);
+        super.enterRollback_stmt(ctx);
+    }
+
+    @Override
+    public void enterSavepoint_stmt(SqliteParser.Savepoint_stmtContext ctx) {
+        String a = "SAVEPOINT";
+        System.out.print(a);
+        traduccion += a;
+        escribirTraduccion(file);
+        super.enterSavepoint_stmt(ctx);
+    }
 
     @Override
     public void enterExpr(SqliteParser.ExprContext ctx) {
@@ -115,7 +169,7 @@ public class Listener extends SqliteBaseListener {
         String a = "";
         if(!ctx.getParent().getText().contains(".") && ctx.getParent().getText().substring(0, 7).toLowerCase().equals("analyze")){
             if(databases.contains(ctx.getText().toLowerCase())){
-                a = "\n";
+                a = ";\n";
             }else{
                 a = " " + ctx.getText() + ";\n";
             }
@@ -143,6 +197,20 @@ public class Listener extends SqliteBaseListener {
         escribirTraduccion(file);
         super.exitDatabase_name(ctx);
     }*/
+
+    @Override
+    public void enterSavepoint_name(SqliteParser.Savepoint_nameContext ctx)  {
+        String a = " " + ctx.getText() + ";\n";
+
+        if((ctx.getParent().getChildCount() == 3 && ctx.getParent().getChild(1).getText().toLowerCase().equals("to")) || (ctx.getParent().getChildCount() == 4 && ctx.getParent().getChild(2).getText().toLowerCase().equals("to"))){
+            a = ctx.getText() + ";\n";
+        }
+
+        System.out.print(a);
+        traduccion += a;
+        escribirTraduccion(file);
+        super.enterSavepoint_name(ctx);
+    }
 
     @Override
     public void enterTable_or_index_name(SqliteParser.Table_or_index_nameContext ctx) {
