@@ -170,6 +170,42 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+    public void enterIndexed_column(SqliteParser.Indexed_columnContext ctx) {
+        String a = ctx.start.getText();
+        if(ctx.getChildCount() >= 3){
+            a += " COLLATE";
+        }
+        System.out.print(a);
+        traduccion += a;
+        super.enterIndexed_column(ctx);
+    }
+
+    @Override
+    public void exitIndexed_column(SqliteParser.Indexed_columnContext ctx) {
+        String a = "";
+
+        if(ctx.getChildCount() == 4 || ctx.getChildCount() == 2){
+            a = " " + ctx.stop.getText();
+        }
+        if(ctx.getParent().getChild(ctx.getParent().getChildCount()-2).getText().equals(ctx.getText())){
+            a += ")";
+        }else{
+            a += ", ";
+        }
+        System.out.print(a);
+        traduccion += a;
+        super.exitIndexed_column(ctx);
+    }
+
+    @Override
+    public void enterCollation_name(SqliteParser.Collation_nameContext ctx) {
+        String a = " " + ctx.start.getText();
+        System.out.print(a);
+        traduccion += a;
+        super.enterCollation_name(ctx);
+    }
+
+    @Override
     public void enterExpr(SqliteParser.ExprContext ctx) {
         String a = ctx.start.getText();
         if(ctx.getParent().getText().substring(0,14).toLowerCase().equals("attachdatabase") || ctx.getParent().getText().substring(0,6).toLowerCase().equals("attach")){
