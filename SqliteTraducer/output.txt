@@ -25,4 +25,4 @@ DROP VIEW IF EXISTS public.vista RESTRICT;
 REINDEX INDEX public.indice;
 REINDEX DATABASE public;
 REINDEX DATABASE temp;
-
+ tom.tom

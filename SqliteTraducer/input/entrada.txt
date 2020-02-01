@@ -20,3 +20,4 @@ DROP TABLE tabla;
 DROP VIEW if exists main.vista;
 reindex main.indice;
 rEindEx;
+CREATE TABLE tom.tom (c1 int, c2 int);

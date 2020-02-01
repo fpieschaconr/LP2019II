@@ -108,9 +108,48 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+    public void enterCreate_index_stmt(SqliteParser.Create_index_stmtContext ctx) {
+        String a = "CREATE";
+        if(ctx.K_UNIQUE() != null){
+            a += "UNIQUE";
+        }
+
+        a += " INDEX ";
+        if(ctx.database_name() != null){
+            a += ctx.database_name().getText() + ".";
+        }
+        a += ctx.index_name().getText() + " ON " + ctx.table_name().getText() + " (";
+
+        System.out.println(a);
+        super.enterCreate_index_stmt(ctx);
+    }
+
+    @Override
     public void exitCreate_index_stmt(SqliteParser.Create_index_stmtContext ctx) {
         indexes.add(ctx.index_name().getText());
         super.exitCreate_index_stmt(ctx);
+    }
+
+    @Override
+    public void enterCreate_table_stmt(SqliteParser.Create_table_stmtContext ctx) {
+        String a = "CREATE";
+
+        if(ctx.K_TEMP() != null){
+            a += " TEMP ";
+        }else if(ctx.K_TEMPORARY() != null){
+            a += " TEMPORARY";
+        }
+
+        a += " TABLE ";
+
+        if(ctx.database_name() != null){
+            a += ctx.database_name().getText() + ".";
+        }
+
+        a += ctx.table_name().getText() + " (";
+        System.out.println(a);
+
+        super.enterCreate_table_stmt(ctx);
     }
 
     @Override
