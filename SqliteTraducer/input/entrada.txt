@@ -16,3 +16,5 @@ rollback transaction to savepoint tom;
 release savepoint tom;
 drop index if exists main.indice;
 create index indice on tabla(c1 collate colacion asc, c2 desc, c3 collate colar, c4 asc, c5, c6);
+DROP TABLE tabla;
+DROP VIEW if exists main.vista;

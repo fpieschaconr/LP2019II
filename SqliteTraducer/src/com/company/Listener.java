@@ -133,6 +133,48 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+    public void enterDrop_table_stmt(SqliteParser.Drop_table_stmtContext ctx) {
+        String a = "DROP TABLE";
+        if(ctx.getChildCount()>=4){
+            if(ctx.getChild(2).getText().toLowerCase().equals("if") && ctx.getChild(3).getText().toLowerCase().equals("exists")){
+                a += " IF EXISTS";
+            }
+        }
+        System.out.print(a);
+        traduccion += a;
+        super.enterDrop_table_stmt(ctx);
+    }
+
+    @Override
+    public void exitDrop_table_stmt(SqliteParser.Drop_table_stmtContext ctx) {
+        String a = " RESTRICT;\n";
+        System.out.print(a);
+        traduccion += a;
+        super.exitDrop_table_stmt(ctx);
+    }
+
+    @Override
+    public void enterDrop_view_stmt(SqliteParser.Drop_view_stmtContext ctx) {
+        String a = "DROP VIEW";
+        if(ctx.getChildCount()>=4){
+            if(ctx.getChild(2).getText().toLowerCase().equals("if") && ctx.getChild(3).getText().toLowerCase().equals("exists")){
+                a += " IF EXISTS";
+            }
+        }
+        System.out.print(a);
+        traduccion += a;
+        super.enterDrop_view_stmt(ctx);
+    }
+
+    @Override
+    public void exitDrop_view_stmt(SqliteParser.Drop_view_stmtContext ctx) {
+        String a = " RESTRICT;\n";
+        System.out.print(a);
+        traduccion += a;
+        super.exitDrop_view_stmt(ctx);
+    }
+
+    @Override
     public void enterRelease_stmt(SqliteParser.Release_stmtContext ctx) {
         String a = "RELEASE";
         if(ctx.getText().toLowerCase().contains("savepoint")){
@@ -188,7 +230,7 @@ public class Listener extends SqliteBaseListener {
             a = " " + ctx.stop.getText();
         }
         if(ctx.getParent().getChild(ctx.getParent().getChildCount()-2).getText().equals(ctx.getText())){
-            a += ")";
+            a += ");\n";
         }else{
             a += ", ";
         }
@@ -261,6 +303,25 @@ public class Listener extends SqliteBaseListener {
     }*/
 
     @Override
+    public void enterTable_name(SqliteParser.Table_nameContext ctx) {
+        String a = ctx.start.getText();
+        if(!ctx.getParent().getText().contains(".")){
+            a = " " + ctx.start.getText();
+        }
+        System.out.println(a);
+        traduccion += a;
+        super.enterTable_name(ctx);
+    }
+
+    @Override
+    public void enterTable_or_index_name(SqliteParser.Table_or_index_nameContext ctx) {
+        String a = ctx.getText() + ";\n";
+        System.out.println(a+" tabla");
+        traduccion += a;
+        super.enterTable_or_index_name(ctx);
+    }
+
+    @Override
     public void enterIndex_name(SqliteParser.Index_nameContext ctx) {
         String a = ctx.start.getText();
         if(!ctx.getParent().getText().contains(".")){
@@ -269,6 +330,28 @@ public class Listener extends SqliteBaseListener {
         System.out.println(a);
         traduccion += a;
         super.enterIndex_name(ctx);
+    }
+
+    @Override
+    public void enterTrigger_name(SqliteParser.Trigger_nameContext ctx) {
+        String a = ctx.start.getText();
+        if(!ctx.getParent().getText().contains(".")){
+            a = " " + ctx.start.getText();
+        }
+        System.out.println(a);
+        traduccion += a;
+        super.enterTrigger_name(ctx);
+    }
+
+    @Override
+    public void enterView_name(SqliteParser.View_nameContext ctx) {
+        String a = ctx.start.getText();
+        if(!ctx.getParent().getText().contains(".")){
+            a = " " + ctx.start.getText();
+        }
+        System.out.println(a);
+        traduccion += a;
+        super.enterView_name(ctx);
     }
 
     @Override
@@ -282,13 +365,5 @@ public class Listener extends SqliteBaseListener {
         System.out.print(a);
         traduccion += a;
         super.enterSavepoint_name(ctx);
-    }
-
-    @Override
-    public void enterTable_or_index_name(SqliteParser.Table_or_index_nameContext ctx) {
-        String a = ctx.getText() + ";\n";
-        System.out.println(a+" tabla");
-        traduccion += a;
-        super.enterTable_or_index_name(ctx);
     }
 }

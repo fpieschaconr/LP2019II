@@ -19,4 +19,7 @@ ROLLBACK TO tom;
 ROLLBACK TRANSACTION TO SAVEPOINT tom;
 RELEASE SAVEPOINT tom;
 DROP INDEX IF EXISTS public.indice;
- indicec1 COLLATE colacion asc, c2 desc, c3 COLLATE colar, c4 asc, c5, c6)
+ indice tablac1 COLLATE colacion asc, c2 desc, c3 COLLATE colar, c4 asc, c5, c6);
+DROP TABLE tabla RESTRICT;
+DROP VIEW IF EXISTS public.vista RESTRICT;
+
