@@ -19,11 +19,10 @@ ROLLBACK TO tom;
 ROLLBACK TRANSACTION TO SAVEPOINT tom;
 RELEASE SAVEPOINT tom;
 DROP INDEX IF EXISTS public.indice;
- indice tablac1 COLLATE c1 colacion asc, c2 c2 desc, c3 COLLATE c3 colar, c4 c4 asc, c5 c5, c6 c6);
-DROP TABLE tabla RESTRICT;
+CREATE INDEX indice ON tabla ( indice tablac1 COLLATE colacion ASC  c1c2 DESC  c2c3 COLLATE colar c3c4 ASC  c4c5 c5c6 c6)DROP TABLE tabla RESTRICT;
 DROP VIEW IF EXISTS public.vista RESTRICT;
 REINDEX INDEX public.indice;
 REINDEX DATABASE public;
 REINDEX DATABASE temp;
 VACUUM;
- table "holi" null rollback "no se puede"
+SELECT *, tom.* FROM table WHERE "holi"=null||raise(rollback,"no se puede")*tom.*tom table "holi" null rollback "no se puede"SELECT * FROM tabla* tabla DELETE FROM tom.tabla NOT INDEXED tom.tabla id 1WHERE id=1

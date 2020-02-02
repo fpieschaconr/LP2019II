@@ -21,5 +21,7 @@ DROP VIEW if exists main.vista;
 reindex main.indice;
 rEindEx;
 vacuum;
-select * from table where "holi" = null || raise(rollback, "no se puede");
-ALTER TABLE distributors ADD COLUMN address varchar(30) primary key not null on conflict rollback;
+SELECT * , tom.* from table where "holi" = null || raise(rollback, "no se puede");
+select * from tabla;
+DELETE FROM tom.tabla NOT INDEXED WHERE id = 1;
+
