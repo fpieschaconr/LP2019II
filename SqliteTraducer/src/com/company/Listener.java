@@ -126,48 +126,9 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
-    public void enterCreate_index_stmt(SqliteParser.Create_index_stmtContext ctx) {
-        String a = "CREATE";
-        if(ctx.K_UNIQUE() != null){
-            a += "UNIQUE";
-        }
-
-        a += " INDEX ";
-        if(ctx.database_name() != null){
-            a += ctx.database_name().getText() + ".";
-        }
-        a += ctx.index_name().getText() + " ON " + ctx.table_name().getText() + " (";
-
-        System.out.println(a);
-        super.enterCreate_index_stmt(ctx);
-    }
-
-    @Override
     public void exitCreate_index_stmt(SqliteParser.Create_index_stmtContext ctx) {
         indexes.add(ctx.index_name().getText());
         super.exitCreate_index_stmt(ctx);
-    }
-
-    @Override
-    public void enterCreate_table_stmt(SqliteParser.Create_table_stmtContext ctx) {
-        String a = "CREATE";
-
-        if(ctx.K_TEMP() != null){
-            a += " TEMP ";
-        }else if(ctx.K_TEMPORARY() != null){
-            a += " TEMPORARY";
-        }
-
-        a += " TABLE ";
-
-        if(ctx.database_name() != null){
-            a += ctx.database_name().getText() + ".";
-        }
-
-        a += ctx.table_name().getText() + " (";
-        System.out.println(a);
-
-        super.enterCreate_table_stmt(ctx);
     }
 
     @Override
@@ -306,6 +267,14 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+    public void enterVacuum_stmt(SqliteParser.Vacuum_stmtContext ctx) {
+        String a = "VACUUM;\n";
+        System.out.print(a);
+        traduccion += a;
+        super.enterVacuum_stmt(ctx);
+    }
+
+    @Override
     public void enterIndexed_column(SqliteParser.Indexed_columnContext ctx) {
         String a = ctx.start.getText();
         if(ctx.getChildCount() >= 3){
@@ -352,10 +321,10 @@ public class Listener extends SqliteBaseListener {
 
     @Override
     public void enterExpr(SqliteParser.ExprContext ctx) {
-        int i = 0;
-        String a = ctx.start.getText();
-        System.out.println(ctx.parent.getClass().toString().equals("com.company.SqliteParser$Attach_stmtContext"));
-        if(ctx.getParent().getText().substring(0,14).toLowerCase().equals("attachdatabase") || ctx.getParent().getText().substring(0,6).toLowerCase().equals("attach")){
+
+        String a = "";
+        if(ctx.getParent().start.getText().toLowerCase().equals("attach")){
+
             a="";
         }
         System.out.println(a);
@@ -363,6 +332,19 @@ public class Listener extends SqliteBaseListener {
         super.enterExpr(ctx);
     }
 
+
+    @Override
+    public void enterRaise_function(SqliteParser.Raise_functionContext ctx) {
+        String a = ctx.start.getText();
+        if(ctx.getChildCount()<6){
+            a =""; //no se hace traducción puesto que no tiene equivalente en postgres
+        }else{
+            a += " EXCEPTION USING MESSAGE =";
+        }
+        System.out.println(a);
+        traduccion += a;
+        super.enterRaise_function(ctx);
+    }
 
     @Override
     public void enterDatabase_name(SqliteParser.Database_nameContext ctx) {
@@ -457,6 +439,17 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+    public void enterColumn_name(SqliteParser.Column_nameContext ctx) {
+        String a = " " + ctx.getText();
+        if(ctx.getParent().getText().contains(".")){
+            a = "." + ctx.getText();
+        }
+        System.out.println(a);
+        traduccion += a;
+        super.enterColumn_name(ctx);
+    }
+
+    @Override
     public void enterView_name(SqliteParser.View_nameContext ctx) {
         String a = ctx.start.getText();
         if(!ctx.getParent().getText().contains(".")){
@@ -481,4 +474,44 @@ public class Listener extends SqliteBaseListener {
     }
 
 
+
+    @Override
+    public void enterSigned_number(SqliteParser.Signed_numberContext ctx) {
+        String a = " " + ctx.getText();
+        System.out.println(a);
+        traduccion += a;
+        super.enterSigned_number(ctx);
+    }
+
+    @Override
+    public void enterLiteral_value(SqliteParser.Literal_valueContext ctx) {
+        String a = " " + ctx.getText();
+        System.out.println(a);
+        traduccion += a;
+        super.enterLiteral_value(ctx);
+    }
+
+    @Override
+    public void enterUnary_operator(SqliteParser.Unary_operatorContext ctx)  {
+        String a = " " + ctx.getText();
+        System.out.print(a);
+        traduccion += a;
+        super.enterUnary_operator(ctx);
+    }
+
+    @Override
+    public void enterError_message(SqliteParser.Error_messageContext ctx)  {
+        String a = " " + ctx.getText() +";\n";
+        System.out.print(a);
+        traduccion += a;
+        super.enterError_message(ctx);
+    }
+
+    @Override
+    public void enterColumn_alias(SqliteParser.Column_aliasContext ctx)  {
+        String a = " " + ctx.getText();
+        System.out.print(a);
+        traduccion += a;
+        super.enterColumn_alias(ctx);
+    }
 }
