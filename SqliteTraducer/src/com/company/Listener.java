@@ -120,7 +120,29 @@ public class Listener extends SqliteBaseListener {
                 }else{
                     SqliteParser.Foreign_key_clauseContext c =b.foreign_key_clause();
                     a+=" REFERENCES "+c.foreign_table().getText();
-
+                    if (c.getText().contains("(")){
+                        a+=c.getText().substring(c.getText().indexOf("("),c.getText().indexOf(")"));
+                    }
+                    if (c.K_DEFERRABLE()!=null){
+                        if(c.K_NOT()!=null){
+                            a+=" NOT";
+                        }
+                        if (c.K_UPDATE()!=null){
+                            a+=" ON UPDATE";
+                        }
+                        if (c.K_DELETE()!=null){
+                            a+=" ON DELETE";
+                        }
+                        if (c.K_MATCH()!=null){
+                            a+=" MATCH "+c.name().get(0).getText();
+                        }
+                        a+=" DEFERRABLE";
+                        if (c.K_DEFERRED()!=null){
+                            a+=" INITIALLY DEFERRED";
+                        }else if(c.K_IMMEDIATE()!=null){
+                            a+=" INITIALLY IMMEDIATE";
+                        }
+                    }
                 }
             }
         }
