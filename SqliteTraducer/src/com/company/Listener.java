@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Listener extends SqliteBaseListener {
 
@@ -57,6 +58,23 @@ public class Listener extends SqliteBaseListener {
         String a = ctx.getText();
         escribirTraduccion(file);
         super.exitParse(ctx);
+    }
+
+    @Override
+    public void enterAlter_table_stmt(SqliteParser.Alter_table_stmtContext ctx) {
+        String a = "ALTER TABLE " + ctx.table_name().getText();
+        if( ctx.K_RENAME() != null){
+            a += " RENAME TO " + ctx.new_table_name().getText();
+        } else if( ctx.K_ADD() != null){
+            a += " ADD ";
+            if(ctx.K_COLUMN() != null){
+                a += "COLUMN ";
+            }
+            a += ctx.column_def().getText();
+        }
+        System.out.println(a);
+        traduccion += a;
+        super.enterAlter_table_stmt(ctx);
     }
 
     @Override
@@ -303,14 +321,17 @@ public class Listener extends SqliteBaseListener {
 
     @Override
     public void enterExpr(SqliteParser.ExprContext ctx) {
+
         String a = "";
         if(ctx.getParent().start.getText().toLowerCase().equals("attach")){
+
             a="";
         }
         System.out.println(a);
         traduccion += a;
         super.enterExpr(ctx);
     }
+
 
     @Override
     public void enterRaise_function(SqliteParser.Raise_functionContext ctx) {
@@ -451,6 +472,7 @@ public class Listener extends SqliteBaseListener {
         traduccion += a;
         super.enterSavepoint_name(ctx);
     }
+
 
 
     @Override
