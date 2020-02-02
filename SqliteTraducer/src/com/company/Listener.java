@@ -110,13 +110,13 @@ public class Listener extends SqliteBaseListener {
     @Override
     public void enterCompound_operator(SqliteParser.Compound_operatorContext ctx) {
         String a = "";
-        if(ctx.K_UNION() != null){
+        if (ctx.K_UNION() != null) {
             a += "UNION";
-        }else if(ctx.K_ALL() != null){
+        } else if (ctx.K_ALL() != null) {
             a += "UNION ALL";
-        }else if(ctx.K_INTERSECT() != null){
+        } else if (ctx.K_INTERSECT() != null) {
             a += "INTERSECT";
-        }else if(ctx.K_EXCEPT() != null){
+        } else if (ctx.K_EXCEPT() != null) {
             a += "EXCEPT";
         }
         traduccion += a;
@@ -149,27 +149,14 @@ public class Listener extends SqliteBaseListener {
         if (ctx.K_UNIQUE() != null) {
             a += " UNIQUE";
         }
-        a += " INDEX";
+        a += " INDEX ";
         if (ctx.K_IF() != null) {
             a += " IF NOT EXISTS";
         }
         if (ctx.database_name() != null) {
             a += ctx.database_name().getText() + ".";
         }
-        a += ctx.index_name().getText() + " ON" + ctx.table_name().getText() + " (";
-        for (int i = 0; i < ctx.indexed_column().size(); i++) {
-            if (i == (ctx.indexed_column().size() - 1)) {
-                a += ctx.indexed_column(i).getText();
-                System.out.println(ctx.indexed_column(i).getText());
-            } else {
-                a += ctx.indexed_column(i).getText() + ", ";
-                System.out.println(ctx.indexed_column(i).getText() + ", ");
-            }
-        }
-        a += ")";
-        if (ctx.K_WHERE() != null) {
-            a += " WHERE" + ctx.expr().getText();
-        }
+        a += ctx.index_name().getText() + " ON " + ctx.table_name().getText() + " (";
         traduccion += a;
         System.out.println(a);
         super.enterCreate_index_stmt(ctx);
@@ -177,6 +164,13 @@ public class Listener extends SqliteBaseListener {
 
     @Override
     public void exitCreate_index_stmt(SqliteParser.Create_index_stmtContext ctx) {
+        String a = "";
+        a += ")";
+        if (ctx.K_WHERE() != null) {
+            a += " WHERE" + ctx.expr().getText();
+        }
+        traduccion += a;
+        System.out.println(a);
         indexes.add(ctx.index_name().getText());
         super.exitCreate_index_stmt(ctx);
     }
@@ -229,6 +223,180 @@ public class Listener extends SqliteBaseListener {
         traduccion += a;
         System.out.println(a);
         super.enterCreate_table_stmt(ctx);
+    }
+
+    @Override
+    public void enterCreate_trigger_stmt(SqliteParser.Create_trigger_stmtContext ctx) {
+        String a = "CREATE";
+        if (ctx.K_TEMP() != null) {
+            a += " TEMP";
+        } else if (ctx.K_TEMPORARY() != null) {
+            a += " TEMPORARY";
+        }
+        a += " TRIGGER ";
+        if (ctx.K_IF() != null) {
+            a += " IF NOT EXISTS ";
+        }
+        if (ctx.database_name(0) != null) {
+            a += ctx.database_name(0).getText() + ".";
+        }
+        a += ctx.trigger_name().getText();
+        if (ctx.K_BEFORE() != null) {
+            a += " BEFORE";
+        } else if (ctx.K_AFTER() != null) {
+            a += " AFTER";
+        } else if (ctx.K_INSTEAD() != null) {
+            a += " INSTEAD OF";
+        }
+        if (ctx.K_DELETE() != null) {
+            a += " DELETE";
+        } else if (ctx.K_INSERT() != null) {
+            a += " INSERT";
+        } else if (ctx.K_UPDATE() != null) {
+            a += " UPDATE";
+            if (ctx.K_OF() != null) {
+                a += " OF";
+                for (int i = 0; i < ctx.column_name().size(); i++) {
+                    if (i == (ctx.column_name().size() - 1)) {
+                        a += ctx.column_name(i).getText();
+                        System.out.println(ctx.column_name(i).getText());
+                    } else {
+                        a += ctx.column_name(i).getText() + ", ";
+                        System.out.println(ctx.column_name(i).getText() + ", ");
+                    }
+                }
+            }
+        }
+        a += " ON";
+        if (ctx.database_name(1) != null) {
+            a += ctx.database_name(1).getText() + ".";
+        }
+        a += ctx.table_name().getText();
+        if (ctx.K_FOR() != null) {
+            a += " FOR EACH ROW";
+        }
+        if (ctx.K_WHEN() != null) {
+            a += " WHEN" + ctx.expr().getText();
+        }
+        a += " BEGIN";
+        if (ctx.update_stmt() != null) {
+            for (int i = 0; i < ctx.update_stmt().size(); i++) {
+                a += ctx.update_stmt(i).getText() + ";";
+                System.out.println(ctx.update_stmt(i).getText() + ";");
+            }
+        }
+        if (ctx.insert_stmt() != null) {
+            for (int i = 0; i < ctx.insert_stmt().size(); i++) {
+                a += ctx.insert_stmt(i).getText() + ";";
+                System.out.println(ctx.insert_stmt(i).getText() + ";");
+            }
+        }
+        if (ctx.delete_stmt() != null) {
+            for (int i = 0; i < ctx.delete_stmt().size(); i++) {
+                a += ctx.delete_stmt(i).getText() + ";";
+                System.out.println(ctx.delete_stmt(i).getText() + ";");
+            }
+        }
+        if (ctx.select_stmt() != null) {
+            for (int i = 0; i < ctx.select_stmt().size(); i++) {
+                a += ctx.select_stmt(i).getText() + ";";
+                System.out.println(ctx.select_stmt(i).getText() + ";");
+            }
+        }
+        a += " END";
+        traduccion += a;
+        System.out.println(a);
+        super.enterCreate_trigger_stmt(ctx);
+    }
+
+    @Override
+    public void enterCreate_view_stmt(SqliteParser.Create_view_stmtContext ctx) {
+        String a = "CREATE";
+        if (ctx.K_TEMP() != null) {
+            a += " TEMP";
+        } else if (ctx.K_TEMPORARY() != null) {
+            a += " TEMPORARY";
+        }
+        a += " VIEW ";
+        if (ctx.K_IF() != null) {
+            a += "IF NOT EXISTS ";
+        }
+        if (ctx.database_name() != null) {
+            a += ctx.database_name().getText() + ".";
+        }
+        a += ctx.view_name().getText() + " AS ";
+        traduccion += a;
+        System.out.println(a);
+        super.enterCreate_view_stmt(ctx);
+    }
+
+    @Override
+    public void enterDelete_stmt(SqliteParser.Delete_stmtContext ctx) {
+        String a = "";
+        if (ctx.with_clause() != null) {
+            a += ctx.with_clause().getText();
+        }
+        a += " DELETE FROM ";
+        traduccion += a;
+        System.out.println(a);
+        super.enterDelete_stmt(ctx);
+    }
+
+    @Override
+    public void exitDelete_stmt(SqliteParser.Delete_stmtContext ctx) {
+        String a = "";
+        if (ctx.K_WHERE() != null) {
+            a += "WHERE " + ctx.expr().getText();
+        }
+        traduccion += a;
+        System.out.println(a);
+        super.exitDelete_stmt(ctx);
+    }
+
+    @Override
+    public void enterDelete_stmt_limited(SqliteParser.Delete_stmt_limitedContext ctx) {
+        String a = "";
+        if (ctx.with_clause() != null) {
+            a += ctx.with_clause().getText();
+        }
+        a += "DELETE FROM ";
+        traduccion += a;
+        System.out.println(a);
+        super.enterDelete_stmt_limited(ctx);
+    }
+
+    @Override
+    public void exitDelete_stmt_limited(SqliteParser.Delete_stmt_limitedContext ctx) {
+        String a = "";
+        if (ctx.K_WHERE() != null) {
+            a += "WHERE " + ctx.expr(0).getText();
+        }
+        if (ctx.K_LIMIT() != null) {
+            if (ctx.K_ORDER() != null) {
+                a += "ORDER BY ";
+                for (int i = 0; i < ctx.ordering_term().size(); i++) {
+                    if (i == (ctx.ordering_term().size() - 1)) {
+                        a += ctx.ordering_term(i).getText();
+                        System.out.println(ctx.ordering_term(i).getText());
+                    } else {
+                        a += ctx.ordering_term(i).getText() + ", ";
+                        System.out.println(ctx.ordering_term(i).getText() + ", ");
+                    }
+                }
+            }
+            a += "LIMIT " + ctx.expr(1).getText();
+            if (ctx.expr(2) != null) {
+                if (ctx.K_OFFSET() != null) {
+                    a += "OFFSET ";
+                } else {
+                    a += ",";
+                }
+                a += ctx.expr(2).getText();
+            }
+        }
+        traduccion += a;
+        System.out.println((a));
+        super.exitDelete_stmt_limited(ctx);
     }
 
     @Override
@@ -304,6 +472,23 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+    public void enterQualified_table_name(SqliteParser.Qualified_table_nameContext ctx) {
+        String a = "";
+        if (ctx.database_name() != null) {
+            a += ctx.database_name().getText() + ".";
+        }
+        a += ctx.table_name().getText();
+        if (ctx.K_BY() != null) {
+            a += " INDEXED BY " + ctx.index_name().getText();
+        } else if (ctx.K_NOT() != null) {
+            a += " NOT INDEXED";
+        }
+        traduccion += a;
+        System.out.println(a);
+        super.enterQualified_table_name(ctx);
+    }
+
+    @Override
     public void enterReindex_stmt(SqliteParser.Reindex_stmtContext ctx) {
         String a = "REINDEX";
         if (ctx.getChildCount() == 1) {
@@ -364,6 +549,57 @@ public class Listener extends SqliteBaseListener {
         System.out.print(a);
         traduccion += a;
         super.enterSavepoint_stmt(ctx);
+    }
+
+    @Override
+    public void enterSimple_select_stmt(SqliteParser.Simple_select_stmtContext ctx) {
+        String a = "";
+        if (ctx.K_WITH() != null) {
+            a += "WITH" + ((ctx.K_RECURSIVE() != null) ? ctx.K_RECURSIVE().getText() : " ");
+            for (int i = 0; i < ctx.common_table_expression().size(); i++) {
+                if (i == (ctx.common_table_expression().size() - 1)) {
+                    a += ctx.common_table_expression(i).getText();
+                    System.out.println(ctx.common_table_expression(i).getText());
+                } else {
+                    a += ctx.common_table_expression(i).getText() + ", ";
+                    System.out.println(ctx.common_table_expression(i).getText() + ", ");
+                }
+            }
+        }
+        traduccion += a;
+        System.out.println(a);
+        super.enterSimple_select_stmt(ctx);
+    }
+
+    @Override
+    public void exitSimple_select_stmt(SqliteParser.Simple_select_stmtContext ctx) {
+        String a = "";
+        if (ctx.K_ORDER() != null) {
+            a += " ORDER BY ";
+            for (int i = 0; i < ctx.ordering_term().size(); i++) {
+                if (i == (ctx.ordering_term().size() - 1)) {
+                    a += ctx.ordering_term(i).getText();
+                    System.out.println(ctx.ordering_term(i).getText());
+                } else {
+                    a += ctx.ordering_term(i).getText() + ", ";
+                    System.out.println(ctx.ordering_term(i).getText() + ", ");
+                }
+            }
+        }
+        if (ctx.K_LIMIT() != null) {
+            a += " LIMIT " + ctx.expr(0).getText();
+            if (ctx.expr(1) != null) {
+                if (ctx.K_OFFSET() != null) {
+                    a += " OFFSET ";
+                } else {
+                    a += ", ";
+                }
+                a += ctx.expr(1).getText();
+            }
+        }
+        traduccion += a;
+        System.out.println(a);
+        super.exitSimple_select_stmt(ctx);
     }
 
     @Override
@@ -595,9 +831,10 @@ public class Listener extends SqliteBaseListener {
                     a += " HAVING ";
                     a = exprSelect(ctx, a);
                 }
-                traduccion += a;
-                System.out.println(a);
+
             }
+            traduccion += a;
+            System.out.println(a);
         } else if (ctx.K_VALUES() != null) {
             String a = "VALUES (";
             a = exprSelect(ctx, a);
@@ -648,47 +885,19 @@ public class Listener extends SqliteBaseListener {
 
     @Override
     public void enterIndexed_column(SqliteParser.Indexed_columnContext ctx) {
-        String a = ctx.start.getText();
-        if (ctx.getChildCount() >= 3) {
-            a += " COLLATE";
+        String a = ctx.column_name().getText();
+        if (ctx.K_COLLATE() != null) {
+            a += " COLLATE " + ctx.collation_name().getText();
         }
+        if (ctx.K_ASC() != null) {
+            a += " ASC ";
+        } else if (ctx.K_DESC() != null) {
+            a += " DESC ";
+        }
+
         System.out.print(a);
         traduccion += a;
         super.enterIndexed_column(ctx);
-    }
-
-    @Override
-    public void exitIndexed_column(SqliteParser.Indexed_columnContext ctx) {
-        String a = "";
-
-        if (ctx.getChildCount() == 4 || ctx.getChildCount() == 2) {
-            a = " " + ctx.stop.getText();
-        }
-        if (ctx.getParent().getChild(ctx.getParent().getChildCount() - 2).getText().equals(ctx.getText())) {
-            a += ");\n";
-        } else {
-            a += ", ";
-        }
-        System.out.print(a);
-        traduccion += a;
-        super.exitIndexed_column(ctx);
-    }
-
-    @Override
-    public void enterCollation_name(SqliteParser.Collation_nameContext ctx) {
-        String a = " " + ctx.start.getText();
-        if (ctx.getParent().getText().toLowerCase().contains("reindex")) {
-            if (collations[0].equals(ctx.getText()) || collations[1].equals(ctx.getText()) || collations[2].equals(ctx.getText())) {
-                a = " DATABASE public;\n";
-            } else if (indexes.contains(ctx.getText())) {
-                a = " INDEX " + ctx.getText() + ";\n";
-            } else {
-                a = " TABLE " + ctx.getText() + ";\n";
-            }
-        }
-        System.out.print(a);
-        traduccion += a;
-        super.enterCollation_name(ctx);
     }
 
     @Override
