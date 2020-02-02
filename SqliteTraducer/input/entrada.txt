@@ -22,3 +22,4 @@ reindex main.indice;
 rEindEx;
 vacuum;
 select * from table where "holi" = null || raise(rollback, "no se puede");
+ALTER TABLE distributors ADD COLUMN address varchar(30) primary key not null on conflict rollback;
