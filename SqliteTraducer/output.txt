@@ -26,4 +26,4 @@ REINDEX INDEX public.indice;
 REINDEX DATABASE public;
 REINDEX DATABASE temp;
 VACUUM;
- table "holi" null rollback "no se puede"
+tom table "holi" null rollback "no se puede" tabla

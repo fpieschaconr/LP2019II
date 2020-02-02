@@ -21,4 +21,5 @@ DROP VIEW if exists main.vista;
 reindex main.indice;
 rEindEx;
 vacuum;
-select * from table where "holi" = null || raise(rollback, "no se puede");
+SELECT * , tom.* from table where "holi" = null || raise(rollback, "no se puede");
+select * from tabla;
