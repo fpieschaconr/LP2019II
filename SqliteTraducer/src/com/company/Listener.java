@@ -123,18 +123,40 @@ public class Listener extends SqliteBaseListener {
                     if (c.getText().contains("(")){
                         a+=c.getText().substring(c.getText().indexOf("("),c.getText().indexOf(")"));
                     }
+                    if (c.K_UPDATE()!=null){
+                        a+=" ON UPDATE";
+                        if (c.getText().toUpperCase().contains("UPDATESETNULL")){
+                            a+=" SET NULL";
+                        }else if(c.getText().toUpperCase().contains("UPDATESETDEFAULT")){
+                            a+=" SET DEFAULT";
+                        }else if(c.getText().toUpperCase().contains("UPDATECASCADE")){
+                            a+=" CASCADE";
+                        }else if(c.getText().toUpperCase().contains("UPDATERESTRICT")){
+                            a+=" RESTRICT";
+                        }else {
+                            a+=" NO ACTION";
+                        }
+                    }
+                    if (c.K_DELETE()!=null){
+                        a+=" ON DELETE";
+                        if (c.getText().toUpperCase().contains("DELETESETNULL")){
+                            a+=" SET NULL";
+                        }else if(c.getText().toUpperCase().contains("DELETESETDEFAULT")){
+                            a+=" SET DEFAULT";
+                        }else if(c.getText().toUpperCase().contains("DELETECASCADE")){
+                            a+=" CASCADE";
+                        }else if(c.getText().toUpperCase().contains("DELETERESTRICT")){
+                            a+=" RESTRICT";
+                        }else {
+                            a+=" NO ACTION";
+                        }
+                    }
+                    if (c.K_MATCH()!=null){
+                        a+=" MATCH "+c.name().get(0).getText();
+                    }
                     if (c.K_DEFERRABLE()!=null){
                         if(c.K_NOT()!=null){
                             a+=" NOT";
-                        }
-                        if (c.K_UPDATE()!=null){
-                            a+=" ON UPDATE";
-                        }
-                        if (c.K_DELETE()!=null){
-                            a+=" ON DELETE";
-                        }
-                        if (c.K_MATCH()!=null){
-                            a+=" MATCH "+c.name().get(0).getText();
                         }
                         a+=" DEFERRABLE";
                         if (c.K_DEFERRED()!=null){
