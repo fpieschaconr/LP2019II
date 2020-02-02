@@ -70,11 +70,62 @@ public class Listener extends SqliteBaseListener {
             if(ctx.K_COLUMN() != null){
                 a += "COLUMN ";
             }
-            a += ctx.column_def().getText();
         }
         System.out.println(a);
         traduccion += a;
         super.enterAlter_table_stmt(ctx);
+    }
+    @Override
+    public void enterColumn_def(SqliteParser.Column_defContext ctx){
+        String a="";
+        a+=ctx.column_name().getText();
+        if (ctx.type_name()!= null){
+            a+=" "+ctx.type_name().getText().toUpperCase();
+        }
+        if(!ctx.column_constraint().isEmpty()){
+            for(int i=0; i<ctx.column_constraint().size(); i++){
+                SqliteParser.Column_constraintContext b = ctx.column_constraint().get(i);
+                if (b.K_CONSTRAINT()!=null){
+                    a+=" CONSTRAINT "+b.name().getText()+",";
+                }else if (b.K_PRIMARY()!=null){
+                    a+=" PRIMARY KEY";
+                    if (b.conflict_clause().K_ON()!=null){
+                        a+=" ON CONFLICT "+b.conflict_clause().getChild(2).getText().toUpperCase();
+                    }
+                    if (b.K_AUTOINCREMENT()!=null){
+                        a+=" SERIAL";
+                    }
+                }else if (b.K_NULL()!= null){
+                    if (b.K_NOT()!=null){
+                        a+=" NOT";
+                    }
+                    a+=" NULL";
+                    if (b.conflict_clause().K_ON()!=null){
+                        a+=" ON CONFLICT "+b.conflict_clause().getChild(2).getText().toUpperCase();
+                    }
+                }else if (b.K_UNIQUE()!=null){
+                    a+=" UNIQUE";
+                    if (b.conflict_clause().K_ON()!=null){
+                        a+=" ON CONFLICT "+b.conflict_clause().getChild(2).getText().toUpperCase();
+                    }
+                }else if (b.K_CHECK()!=null){
+                    a+=" CHECK ("+b.expr().getText()+")";
+                }else if (b.K_DEFAULT()!=null){
+                    a+=" DEFAULT "+b.getChild(1).getText();
+                    if(b.expr()!=null){
+                        a+=b.expr().getText()+")";
+                    }
+                }else if (b.K_COLLATE()!=null){
+                    a+=" COLLATE "+b.collation_name().getText();
+                }else{
+                    SqliteParser.Foreign_key_clauseContext c =b.foreign_key_clause();
+                    a+=" REFERENCES "+c.foreign_table().getText();
+
+                }
+            }
+        }
+        traduccion +=a+";\n";
+        super.enterColumn_def(ctx);
     }
 
     @Override
