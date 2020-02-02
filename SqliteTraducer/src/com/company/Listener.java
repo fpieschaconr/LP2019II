@@ -23,6 +23,7 @@ public class Listener extends SqliteBaseListener {
     private static ArrayList<String> indexes = new ArrayList<>();
     //en esta se guardan los tres tipos de collation de sqlite
     private static final String[] collations = {"binary", "rtrim", "nocase"};
+    private static ArrayList<String> triggerTable = new ArrayList<>();
 
     private static void escribirTraduccion(String file) {
         String str = "";
@@ -336,6 +337,7 @@ public class Listener extends SqliteBaseListener {
             a += ctx.database_name(0).getText() + ".";
         }
         a += ctx.trigger_name().getText();
+        triggerTable.add(ctx.trigger_name().getText());
         if (ctx.K_BEFORE() != null) {
             a += " BEFORE";
         } else if (ctx.K_AFTER() != null) {
@@ -367,6 +369,7 @@ public class Listener extends SqliteBaseListener {
             a += ctx.database_name(1).getText() + ".";
         }
         a += ctx.table_name().getText();
+        triggerTable.add(ctx.table_name().getText());
         if (ctx.K_FOR() != null) {
             a += " FOR EACH ROW";
         }
@@ -398,7 +401,7 @@ public class Listener extends SqliteBaseListener {
                 System.out.println(ctx.select_stmt(i).getText() + ";");
             }
         }
-        a += " END";
+        a += " END;\n";
         traduccion += a;
         System.out.println(a);
         super.enterCreate_trigger_stmt(ctx);
@@ -543,6 +546,29 @@ public class Listener extends SqliteBaseListener {
         System.out.print(a);
         traduccion += a;
         super.exitDrop_table_stmt(ctx);
+    }
+
+    @Override
+    public void enterDrop_trigger_stmt(SqliteParser.Drop_trigger_stmtContext ctx) {
+        String a = "DROP TRIGGER";
+        if (ctx.getChildCount() >= 4) {
+            if (ctx.getChild(2).getText().toLowerCase().equals("if") && ctx.getChild(3).getText().toLowerCase().equals("exists")) {
+                a += " IF EXISTS";
+            }
+        }
+        System.out.print(a);
+        traduccion += a;
+        super.enterDrop_trigger_stmt(ctx);
+    }
+
+    @Override
+    public void exitDrop_trigger_stmt(SqliteParser.Drop_trigger_stmtContext ctx) {
+        String a = " ON ";
+        a+= triggerTable.get(triggerTable.indexOf(ctx.trigger_name().getText())+1);
+        a += " RESTRICT;\n";
+        System.out.print(a);
+        traduccion += a;
+        super.exitDrop_trigger_stmt(ctx);
     }
 
     @Override
@@ -800,6 +826,23 @@ public class Listener extends SqliteBaseListener {
         traduccion += a;
         System.out.println(a);
         super.exitFactored_select_stmt(ctx);
+    }
+
+    @Override
+    public void enterInsert_stmt(SqliteParser.Insert_stmtContext ctx){
+        String a = "";
+        if (ctx.with_clause() != null) {
+            a += ctx.with_clause().getText();
+        }
+        if (ctx.K_REPLACE()!=null){
+            a+="REPLACE";
+        }else{
+            a+="INSERT";
+        }
+        a+=" INTO";
+        traduccion += a;
+        System.out.println(a);
+        super.enterInsert_stmt(ctx);
     }
 
     @Override
