@@ -24,3 +24,4 @@ vacuum;
 SELECT * , tom.* from table where "holi" = null || raise(rollback, "no se puede");
 select * from tabla;
 DELETE FROM tom.tabla NOT INDEXED WHERE id = 1;
+

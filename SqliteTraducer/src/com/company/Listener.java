@@ -71,11 +71,106 @@ public class Listener extends SqliteBaseListener {
             if (ctx.K_COLUMN() != null) {
                 a += "COLUMN ";
             }
-            a += ctx.column_def().getText();
         }
         System.out.println(a);
         traduccion += a;
         super.enterAlter_table_stmt(ctx);
+    }
+    @Override
+    public void enterColumn_def(SqliteParser.Column_defContext ctx){
+        String a="";
+        a+=ctx.column_name().getText();
+        if (ctx.type_name()!= null){
+            a+=" "+ctx.type_name().getText().toUpperCase();
+        }
+        if(!ctx.column_constraint().isEmpty()){
+            for(int i=0; i<ctx.column_constraint().size(); i++){
+                SqliteParser.Column_constraintContext b = ctx.column_constraint().get(i);
+                if (b.K_CONSTRAINT()!=null){
+                    a+=" CONSTRAINT "+b.name().getText()+",";
+                }else if (b.K_PRIMARY()!=null){
+                    a+=" PRIMARY KEY";
+                    if (b.conflict_clause().K_ON()!=null){
+                        a+=" ON CONFLICT "+b.conflict_clause().getChild(2).getText().toUpperCase();
+                    }
+                    if (b.K_AUTOINCREMENT()!=null){
+                        a+=" SERIAL";
+                    }
+                }else if (b.K_NULL()!= null){
+                    if (b.K_NOT()!=null){
+                        a+=" NOT";
+                    }
+                    a+=" NULL";
+                    if (b.conflict_clause().K_ON()!=null){
+                        a+=" ON CONFLICT "+b.conflict_clause().getChild(2).getText().toUpperCase();
+                    }
+                }else if (b.K_UNIQUE()!=null){
+                    a+=" UNIQUE";
+                    if (b.conflict_clause().K_ON()!=null){
+                        a+=" ON CONFLICT "+b.conflict_clause().getChild(2).getText().toUpperCase();
+                    }
+                }else if (b.K_CHECK()!=null){
+                    a+=" CHECK ("+b.expr().getText()+")";
+                }else if (b.K_DEFAULT()!=null){
+                    a+=" DEFAULT "+b.getChild(1).getText();
+                    if(b.expr()!=null){
+                        a+=b.expr().getText()+")";
+                    }
+                }else if (b.K_COLLATE()!=null){
+                    a+=" COLLATE "+b.collation_name().getText();
+                }else{
+                    SqliteParser.Foreign_key_clauseContext c =b.foreign_key_clause();
+                    a+=" REFERENCES "+c.foreign_table().getText();
+                    if (c.getText().contains("(")){
+                        a+=c.getText().substring(c.getText().indexOf("("),c.getText().indexOf(")"));
+                    }
+                    if (c.K_UPDATE()!=null){
+                        a+=" ON UPDATE";
+                        if (c.getText().toUpperCase().contains("UPDATESETNULL")){
+                            a+=" SET NULL";
+                        }else if(c.getText().toUpperCase().contains("UPDATESETDEFAULT")){
+                            a+=" SET DEFAULT";
+                        }else if(c.getText().toUpperCase().contains("UPDATECASCADE")){
+                            a+=" CASCADE";
+                        }else if(c.getText().toUpperCase().contains("UPDATERESTRICT")){
+                            a+=" RESTRICT";
+                        }else {
+                            a+=" NO ACTION";
+                        }
+                    }
+                    if (c.K_DELETE()!=null){
+                        a+=" ON DELETE";
+                        if (c.getText().toUpperCase().contains("DELETESETNULL")){
+                            a+=" SET NULL";
+                        }else if(c.getText().toUpperCase().contains("DELETESETDEFAULT")){
+                            a+=" SET DEFAULT";
+                        }else if(c.getText().toUpperCase().contains("DELETECASCADE")){
+                            a+=" CASCADE";
+                        }else if(c.getText().toUpperCase().contains("DELETERESTRICT")){
+                            a+=" RESTRICT";
+                        }else {
+                            a+=" NO ACTION";
+                        }
+                    }
+                    if (c.K_MATCH()!=null){
+                        a+=" MATCH "+c.name().get(0).getText();
+                    }
+                    if (c.K_DEFERRABLE()!=null){
+                        if(c.K_NOT()!=null){
+                            a+=" NOT";
+                        }
+                        a+=" DEFERRABLE";
+                        if (c.K_DEFERRED()!=null){
+                            a+=" INITIALLY DEFERRED";
+                        }else if(c.K_IMMEDIATE()!=null){
+                            a+=" INITIALLY IMMEDIATE";
+                        }
+                    }
+                }
+            }
+        }
+        traduccion +=a+";\n";
+        super.enterColumn_def(ctx);
     }
 
     @Override
@@ -983,7 +1078,9 @@ public class Listener extends SqliteBaseListener {
             a = " " + ctx.start.getText();
         }
         System.out.println(a);
-        traduccion += a;
+        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")){
+            traduccion += a;
+        }
         super.enterTable_name(ctx);
     }
 
@@ -1024,7 +1121,9 @@ public class Listener extends SqliteBaseListener {
             a = "." + ctx.getText();
         }
         System.out.println(a);
-        traduccion += a;
+        if (!ctx.getParent().getParent().getText().toUpperCase().contains("ALTER")){
+            traduccion += a;
+        }
         super.enterColumn_name(ctx);
     }
 
@@ -1057,7 +1156,9 @@ public class Listener extends SqliteBaseListener {
     public void enterSigned_number(SqliteParser.Signed_numberContext ctx) {
         String a = " " + ctx.getText();
         System.out.println(a);
-        traduccion += a;
+        if (!ctx.getParent().getParent().getParent().getText().toUpperCase().contains("ALTER")){
+            traduccion += a;
+        }
         super.enterSigned_number(ctx);
     }
 
