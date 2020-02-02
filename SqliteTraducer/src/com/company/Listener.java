@@ -455,7 +455,9 @@ public class Listener extends SqliteBaseListener {
             a = " " + ctx.start.getText();
         }
         System.out.println(a);
-        traduccion += a;
+        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")){
+            traduccion += a;
+        }
         super.enterTable_name(ctx);
     }
 
@@ -496,7 +498,9 @@ public class Listener extends SqliteBaseListener {
             a = "." + ctx.getText();
         }
         System.out.println(a);
-        traduccion += a;
+        if (!ctx.getParent().getParent().getText().toUpperCase().contains("ALTER")){
+            traduccion += a;
+        }
         super.enterColumn_name(ctx);
     }
 
@@ -530,7 +534,9 @@ public class Listener extends SqliteBaseListener {
     public void enterSigned_number(SqliteParser.Signed_numberContext ctx) {
         String a = " " + ctx.getText();
         System.out.println(a);
-        traduccion += a;
+        if (!ctx.getParent().getParent().getParent().getText().toUpperCase().contains("ALTER")){
+            traduccion += a;
+        }
         super.enterSigned_number(ctx);
     }
 
