@@ -262,7 +262,7 @@ update_stmt_limited
  ;
 
 vacuum_stmt
- : K_VACUUM
+ : K_VACUUM (database_name)? (K_INTO file_name)?
  ;
 
 column_def
@@ -680,6 +680,10 @@ any_name
  | STRING_LITERAL
  | '(' any_name ')'
  ;
+
+file_name
+  : IDENTIFIER '.' IDENTIFIER
+  ;
 
 SCOL : ';';
 DOT : '.';
