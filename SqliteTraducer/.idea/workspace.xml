@@ -119,6 +119,7 @@
       <workItem from="1580527498961" duration="1208000" />
       <workItem from="1580572524539" duration="5732000" />
       <workItem from="1580586556054" duration="16340000" />
+
       <workItem from="1580667671982" duration="13790000" />
       <workItem from="1580694025545" duration="8972000" />
     </task>
@@ -135,6 +136,7 @@
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
       <updated>1580697655634</updated>
+
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
@@ -177,6 +179,7 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1580515770009" />
+
     <state width="1286" height="163" key="GridCell.Tab.0.bottom" timestamp="1580690996498">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -193,6 +196,7 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1286" height="163" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580690996498" />
+
     <state x="378" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1580667749987">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

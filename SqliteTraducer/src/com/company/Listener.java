@@ -365,7 +365,9 @@ public class Listener extends SqliteBaseListener {
                 }
             }
         }
-        a += " ON";
+
+        a += " ON ";
+
         if (ctx.database_name(1) != null) {
             a += ctx.database_name(1).getText() + ".";
         }
@@ -377,8 +379,10 @@ public class Listener extends SqliteBaseListener {
         if (ctx.K_WHEN() != null) {
             a += " WHEN" + ctx.expr().getText();
         }
-        a += " BEGIN";
-        if (ctx.update_stmt() != null) {
+
+        a += " BEGIN\n";
+        /*if (ctx.update_stmt() != null) {
+
             for (int i = 0; i < ctx.update_stmt().size(); i++) {
                 a += ctx.update_stmt(i).getText() + ";";
                 System.out.println(ctx.update_stmt(i).getText() + ";");
@@ -401,14 +405,25 @@ public class Listener extends SqliteBaseListener {
                 a += ctx.select_stmt(i).getText() + ";";
                 System.out.println(ctx.select_stmt(i).getText() + ";");
             }
-        }
-        a += " END;\n";
+
+        }*/
+
         traduccion += a;
         System.out.println(a);
         super.enterCreate_trigger_stmt(ctx);
     }
 
     @Override
+
+    public void exitCreate_trigger_stmt(SqliteParser.Create_trigger_stmtContext ctx) {
+        String a = "END;\n";
+        traduccion += a;
+        System.out.println(a);
+        super.exitCreate_trigger_stmt(ctx);
+    }
+
+    @Override
+
     public void enterCreate_view_stmt(SqliteParser.Create_view_stmtContext ctx) {
         String a = "CREATE";
         if (ctx.K_TEMP() != null) {
@@ -500,6 +515,92 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+
+    public void enterUpdate_stmt(SqliteParser.Update_stmtContext ctx) {
+        String a = "";
+        if (ctx.with_clause() != null) {
+            a += ctx.with_clause().getText();
+        }
+        a += " UPDATE SET ";
+        for(int i=0; i < ctx.column_name().size(); i++){
+            if(i == ctx.column_name().size()-1){
+                a += ctx.column_name().get(i).getText() + " = " + ctx.expr().get(i).getText() + " ";
+            }else{
+                a += ctx.column_name().get(i).getText() + " = " + ctx.expr().get(i).getText() + ", ";
+            }
+        }
+        traduccion += a;
+        System.out.println(a);
+        super.enterUpdate_stmt(ctx);
+    }
+
+    @Override
+    public void exitUpdate_stmt(SqliteParser.Update_stmtContext ctx) {
+        String a = "";
+        if (ctx.K_WHERE() != null) {
+            a += "WHERE " + ctx.expr().get(ctx.expr().size()-1).getText();
+        }
+        a += ";\n";
+        traduccion += a;
+        System.out.println(a);
+        super.exitUpdate_stmt(ctx);
+    }
+
+    @Override
+    public void enterUpdate_stmt_limited(SqliteParser.Update_stmt_limitedContext ctx) {
+        String a = "";
+        if (ctx.with_clause() != null) {
+            a += ctx.with_clause().getText();
+        }
+        a += " UPDATE SET ";
+        for(int i=0; i < ctx.column_name().size(); i++){
+            if(i == ctx.column_name().size()-1){
+                a += ctx.column_name().get(i).getText() + " = " + ctx.expr().get(i).getText() + " ";
+            }else{
+                a += ctx.column_name().get(i).getText() + " = " + ctx.expr().get(i).getText() + ", ";
+            }
+        }
+        traduccion += a;
+        System.out.println(a);
+        super.enterUpdate_stmt_limited(ctx);
+    }
+
+    @Override
+    public void exitUpdate_stmt_limited(SqliteParser.Update_stmt_limitedContext ctx) {
+        String a = "";
+        if (ctx.K_WHERE() != null) {
+            a += "WHERE " + ctx.expr(ctx.expr().size()-3).getText();
+        }
+        if (ctx.K_LIMIT() != null) {
+            if (ctx.K_ORDER() != null) {
+                a += "ORDER BY ";
+                for (int i = 0; i < ctx.ordering_term().size(); i++) {
+                    if (i == (ctx.ordering_term().size() - 1)) {
+                        a += ctx.ordering_term(i).getText();
+                        System.out.println(ctx.ordering_term(i).getText());
+                    } else {
+                        a += ctx.ordering_term(i).getText() + ", ";
+                        System.out.println(ctx.ordering_term(i).getText() + ", ");
+                    }
+                }
+            }
+            a += "LIMIT " + ctx.expr(ctx.expr().size()-2).getText();
+            if (ctx.expr(ctx.expr().size()-1) != null) {
+                if (ctx.K_OFFSET() != null) {
+                    a += "OFFSET ";
+                } else {
+                    a += ",";
+                }
+                a += ctx.expr(ctx.expr().size()-1).getText();
+            }
+        }
+        traduccion += a;
+        System.out.println((a));
+        super.exitUpdate_stmt_limited(ctx);
+    }
+
+    @Override
+
     public void enterDetach_stmt(SqliteParser.Detach_stmtContext ctx) {
         String a = "DROP SCHEMA";
         System.out.print(a);
@@ -723,6 +824,7 @@ public class Listener extends SqliteBaseListener {
         traduccion += a;
         System.out.println(a);
         super.exitSimple_select_stmt(ctx);
+
     }
 
     @Override
@@ -888,11 +990,10 @@ public class Listener extends SqliteBaseListener {
         if (ctx.with_clause() != null) {
             a += ctx.with_clause().getText();
         }
-        if (ctx.K_REPLACE()!=null){
-            a+="REPLACE";
-        }else{
-            a+="INSERT";
-        }
+        
+        a+="INSERT";
+        
+
         a+=" INTO ";
         traduccion += a;
         System.out.println(a);
@@ -916,6 +1017,7 @@ public class Listener extends SqliteBaseListener {
         traduccion += a;
         System.out.println(a);
         super.exitInsert_stmt(ctx);
+
     }
 
     @Override
@@ -1116,6 +1218,7 @@ public class Listener extends SqliteBaseListener {
     @Override
     public void enterVacuum_stmt(SqliteParser.Vacuum_stmtContext ctx) {
         String a = "VACUUM;\n";
+
         System.out.print(a);
         traduccion += a;
         super.enterVacuum_stmt(ctx);
@@ -1142,6 +1245,7 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+
     public void enterExpr(SqliteParser.ExprContext ctx) {
         String a = "";
         if (ctx.getParent().start.getText().toLowerCase().equals("attach")) {
@@ -1227,7 +1331,9 @@ public class Listener extends SqliteBaseListener {
             a = " " + ctx.start.getText();
         }
         System.out.println(a);
+
         if (!ctx.getParent().getText().toUpperCase().contains("ALTER")&&!ctx.getParent().getParent().getText().toUpperCase().contains("SELECT")&&!(ctx.getParent().getRuleIndex() == SqliteParser.RULE_expr)){
+
             traduccion += a;
         }
         super.enterTable_name(ctx);
