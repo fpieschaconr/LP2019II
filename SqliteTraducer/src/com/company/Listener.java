@@ -25,7 +25,7 @@ public class Listener extends SqliteBaseListener {
     private static final String[] collations = {"binary", "rtrim", "nocase"};
     private static ArrayList<String> triggerTable = new ArrayList<>();
 
-    private static void escribirTraduccion(String file) {
+    public static void escribirTraduccion(String file) {
         String str = "";
         str = "-- Generated postgreSQL file from SQLite\n-- Final ANTLRv4 Project LP 2019-II\n-- By Tom Erick Perez, Felipe Pieschacon and Juan Nicolas Nobza\n\n" + System.lineSeparator() + traduccion;
         crearArchivo(file, str);
@@ -58,7 +58,7 @@ public class Listener extends SqliteBaseListener {
     @Override
     public void exitParse(SqliteParser.ParseContext ctx) {
         String a = ctx.getText();
-        escribirTraduccion(file);
+        //escribirTraduccion(file);
         super.exitParse(ctx);
     }
 

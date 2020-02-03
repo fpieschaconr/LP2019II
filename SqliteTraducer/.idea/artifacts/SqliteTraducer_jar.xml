@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SqliteTraducer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SqliteTraducer_jar</output-path>
+    <root id="archive" name="SqliteTraducer.jar">
+      <element id="module-output" name="SqliteTraducer" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/antlr-4.8-complete.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
