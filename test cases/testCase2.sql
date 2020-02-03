@@ -1,0 +1,321 @@
+DROP TABLE IF EXISTS Victories;
+CREATE TABLE Victories (
+  VictoryType text,
+  Score integer,
+  WinningTurn integer,
+  IsMultiplayer integer,
+  PlayerTeamWon integer,
+  PlayerCivilizationType text,
+  PlayerHandicapType text,
+  GameEndTime integer,
+  PlayerLeaderName text,
+  PlayerCivilizationName text,
+  WinningTeamLeaderCivilizationType text,
+  StartEraType text,
+  MapName text,
+  WorldSizeType text,
+  GameSpeedType text,
+  WinningTeamPrimaryColor text,
+  WinningTeamSecondaryColor text
+);
+
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_CULTURAL',4530,427,0,1,'CIVILIZATION_AZTEC','HANDICAP_WARLORD',130599439096070000,NULL,NULL,'CIVILIZATION_AZTEC','ERA_ANCIENT','Assets\Maps\Continents.lua','WORLDSIZE_STANDARD','GAMESPEED_STANDARD','COLOR_PLAYER_AZTEC_ICON','COLOR_PLAYER_AZTEC_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_CULTURAL',3801,479,0,1,'CIVILIZATION_GRANCOLOMBIA','HANDICAP_WARLORD',130624580125550000,NULL,NULL,'CIVILIZATION_GRANCOLOMBIA','ERA_ANCIENT','Assets\Maps\Continents.lua','WORLDSIZE_STANDARD','GAMESPEED_STANDARD','COLOR_PLAYER_GRANCOLOMBIA_ICON','COLOR_PLAYER_GRANCOLOMBIA_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES (NULL,101,68,0,0,'CIVILIZATION_BYZANTIUM','HANDICAP_WARLORD',130628928163349984,NULL,NULL,NULL,'ERA_ANCIENT','Assets\Maps\Continents.lua','WORLDSIZE_STANDARD','GAMESPEED_STANDARD',NULL,NULL);
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_SPACE_RACE',3563,489,0,1,'CIVILIZATION_BYZANTIUM','HANDICAP_WARLORD',130631737989620000,NULL,NULL,'CIVILIZATION_BYZANTIUM','ERA_ANCIENT','Assets\Maps\Continents.lua','WORLDSIZE_STANDARD','GAMESPEED_STANDARD','COLOR_PLAYER_BYZANTIUM_ICON','COLOR_PLAYER_BYZANTIUM_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_TIME',3073,500,0,1,'CIVILIZATION_AUSTRIA','HANDICAP_WARLORD',130638704730590000,NULL,NULL,'CIVILIZATION_AUSTRIA','ERA_ANCIENT','Assets\Maps\Earth_Standard.Civ5Map','WORLDSIZE_STANDARD','GAMESPEED_STANDARD','COLOR_PLAYER_AUSTRIA_ICON','COLOR_PLAYER_AUSTRIA_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_CULTURAL',4302,478,0,1,'CIVILIZATION_BRAZIL','HANDICAP_WARLORD',130652279282169984,NULL,NULL,'CIVILIZATION_BRAZIL','ERA_ANCIENT','Assets\DLC\Expansion\Maps\Amazon_XP.lua','WORLDSIZE_STANDARD','GAMESPEED_STANDARD','COLOR_PLAYER_BRAZIL_ICON','COLOR_PLAYER_BRAZIL_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_CULTURAL',3141,467,0,1,'CIVILIZATION_MOROCCO','HANDICAP_WARLORD',130660269952310016,NULL,NULL,'CIVILIZATION_MOROCCO','ERA_ANCIENT','Assets\DLC\DLC_SP_Maps\Maps\Sandstorm.lua','WORLDSIZE_STANDARD','GAMESPEED_STANDARD','COLOR_PLAYER_MOROCCO_ICON','COLOR_PLAYER_MOROCCO_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_TIME',7124,207,0,1,'CIVILIZATION_GREECE','HANDICAP_WARLORD',130687016336760000,NULL,NULL,'CIVILIZATION_GREECE','ERA_ANCIENT','Assets\DLC\DLC_06\Scenarios\WonderScenario\WonderScenario.Civ5Map','WORLDSIZE_TINY','GAMESPEED_STANDARD','COLOR_PLAYER_GREECE_ICON','COLOR_PLAYER_GREECE_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_DOMINATION',62857,70,0,1,'CIVILIZATION_HUNS','HANDICAP_WARLORD',130690331467120000,NULL,NULL,'CIVILIZATION_HUNS','ERA_ANCIENT','Assets\DLC\Expansion\Scenarios\FallOfRomeScenario\FoRScenario.Civ5Map','WORLDSIZE_LARGE','GAMESPEED_QUICK','COLOR_PLAYER_HUNS_ICON','COLOR_PLAYER_HUNS_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES (NULL,28,12,0,0,'CIVILIZATION_CELTS','HANDICAP_PRINCE',131152307111860016,NULL,NULL,NULL,'ERA_ANCIENT','Assets\Maps\Continents.lua','WORLDSIZE_STANDARD','GAMESPEED_STANDARD',NULL,NULL);
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_CULTURAL',3678,466,0,1,'CIVILIZATION_CELTS','HANDICAP_WARLORD',131162842149529984,NULL,NULL,'CIVILIZATION_CELTS','ERA_ANCIENT','Assets\Maps\Continents.lua','WORLDSIZE_STANDARD','GAMESPEED_STANDARD','COLOR_PLAYER_CELTS_ICON','COLOR_PLAYER_CELTS_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_CULTURAL',4701,411,0,1,'CIVILIZATION_CARTHAGE','HANDICAP_WARLORD',131189916341360000,NULL,NULL,'CIVILIZATION_CARTHAGE','ERA_ANCIENT','Assets\DLC\DLC_SP_Maps_2\Maps\Random_Africa_Standard.Civ5Map','WORLDSIZE_STANDARD','GAMESPEED_STANDARD','COLOR_PLAYER_CARTHAGE_ICON','COLOR_PLAYER_CARTHAGE_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES (NULL,718,240,0,0,'CIVILIZATION_ENGLAND','HANDICAP_WARLORD',131198386940650000,NULL,NULL,NULL,'ERA_ANCIENT','Assets\DLC\Expansion\Maps\Large_Islands.lua','WORLDSIZE_STANDARD','GAMESPEED_STANDARD',NULL,NULL);
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES (NULL,1077,284,0,0,'CIVILIZATION_PORTUGAL','HANDICAP_WARLORD',131204255674230000,NULL,NULL,NULL,'ERA_ANCIENT','Assets\Maps\SmallContinents.lua','WORLDSIZE_STANDARD','GAMESPEED_STANDARD',NULL,NULL);
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_DOMINATION',12521,39,0,1,'CIVILIZATION_CHINA','HANDICAP_WARLORD',131324363577730000,NULL,NULL,'CIVILIZATION_CHINA','ERA_ANCIENT','Assets\DLC\DLC_05\Scenarios\KoreaScenario\KoreaScenario.Civ5Map','WORLDSIZE_SMALL','GAMESPEED_QUICK','COLOR_PLAYER_CHINA_ICON','COLOR_PLAYER_CHINA_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_CULTURAL',4136,479,0,1,'CIVILIZATION_ARABIA','HANDICAP_WARLORD',131374770145750000,NULL,NULL,'CIVILIZATION_ARABIA','ERA_ANCIENT','Assets\Maps\Continents.lua','WORLDSIZE_STANDARD','GAMESPEED_STANDARD','COLOR_PLAYER_ARABIA_ICON','COLOR_PLAYER_ARABIA_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_SPACE_RACE',2530,449,0,1,'CIVILIZATION_KOREA','HANDICAP_WARLORD',131511882517660000,NULL,NULL,'CIVILIZATION_KOREA','ERA_ANCIENT','Assets\Maps\SmallContinents.lua','WORLDSIZE_STANDARD','GAMESPEED_STANDARD','COLOR_PLAYER_KOREA_ICON','COLOR_PLAYER_KOREA_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_DOMINATION',5382,477,0,1,'CIVILIZATION_HUNS','HANDICAP_WARLORD',131519170151020000,NULL,NULL,'CIVILIZATION_HUNS','ERA_ANCIENT','Assets\Maps\Earth_Standard.Civ5Map','WORLDSIZE_STANDARD','GAMESPEED_STANDARD','COLOR_PLAYER_HUNS_ICON','COLOR_PLAYER_HUNS_BACKGROUND');
+INSERT INTO Victories (VictoryType,Score,WinningTurn,IsMultiplayer,PlayerTeamWon,PlayerCivilizationType,PlayerHandicapType,GameEndTime,PlayerLeaderName,PlayerCivilizationName,WinningTeamLeaderCivilizationType,StartEraType,MapName,WorldSizeType,GameSpeedType,WinningTeamPrimaryColor,WinningTeamSecondaryColor) VALUES ('VICTORY_SPACE_RACE',2231,455,0,1,'CIVILIZATION_EGYPT','HANDICAP_WARLORD',131573544381350000,NULL,NULL,'CIVILIZATION_EGYPT','ERA_ANCIENT','Assets\Maps\Fractal.lua','WORLDSIZE_HUGE','GAMESPEED_STANDARD','COLOR_PLAYER_EGYPT_ICON','COLOR_PLAYER_EGYPT_BACKGROUND');
+DROP TABLE IF EXISTS VictoryDLC;
+CREATE TABLE VictoryDLC (
+  VictoryRow integer,
+  PackageGUID text,
+  PackageName text,
+  PackageVersion integer
+);
+
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (1,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (2,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (3,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (4,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (5,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (6,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (7,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (8,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (8,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (9,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (9,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (9,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (10,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (11,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (12,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (13,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (14,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (15,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (15,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (15,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (16,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (17,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (18,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{293C1EE3-1176-44F6-AC1F-59663826DE74}','Mongolia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{B685D5DE-7CCA-4E75-81B4-2F60754E6330}','Spain and Inca',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{ECF7C605-BA11-4CAC-8D80-D71306AAC471}','Polynesia',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{B3030D39-C0D8-4BC7-91B1-7AD1CAF585AB}','Denmark',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{112C22B2-5308-42B6-B734-171CCAB3037B}','Korea',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{BBB0D085-A0B1-4475-B007-3E549CF3ADC3}','Ancient Wonders',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{EA67AED5-5859-4875-BF3A-360FE9E55D1B}','Civilization 5 Complete',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{7459BA32-5764-44AE-8E95-01AD0E0EFD48}','Babylon',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{3F49DF54-68B6-44D1-A930-A168628FAA59}','DLC_SP_Maps',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{46EAEFFC-7B1D-443D-BFC8-F825DFEFB094}','DLC_SP_Maps_2',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{4255F5F7-D3AB-4E55-ACEE-4670082040ED}','DLC_SP_Maps_3',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{0E3751A1-F840-4E1B-9706-519BF484E59D}','Expansion - Gods and Kings',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{6DA07636-4123-4018-B643-6575B4EC336B}','Expansion - Brave New World',1);
+INSERT INTO VictoryDLC (VictoryRow,PackageGUID,PackageName,PackageVersion) VALUES (19,'{8871E748-29A4-4910-8C57-8C99E32D0167}','Upgrade 1',1);
+DROP TABLE IF EXISTS VictoryMods;
+CREATE TABLE VictoryMods (
+  VictoryRow integer,
+  ModId text,
+  ModName text,
+  ModVersion integer
+);
+
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (2,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (2,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (3,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (3,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (4,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (4,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (5,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (5,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (6,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (6,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (7,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (7,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (8,'2968ab37-29a3-4de7-8b84-ece688231e40','Wonders of the Ancient World',1);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (9,'76d702e9-8b28-429b-a97d-f84388f548c5','Fall of Rome',1);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (10,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (10,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (11,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (11,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (12,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (12,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (13,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (13,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (14,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (14,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (15,'24081928-4703-4845-8b9c-c1468a8cacf2','Samurai Invasion of Korea',1);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (16,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (16,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (17,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (17,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (18,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (18,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (19,'70823211-d0db-4f85-bee5-8de667a4567f','Trading Posts Grow into Towns',5);
+INSERT INTO VictoryMods (VictoryRow,ModId,ModName,ModVersion) VALUES (19,'a8278e2d-2c9c-42ea-b08f-aa09313ff929','Gran Colombia Civilization',2);

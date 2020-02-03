@@ -3,7 +3,7 @@
 -- By Tom Erick Perez, Felipe Pieschacon and Juan Nicolas Nobza
 
 
-CREATE SCHEMA ":memory:" nuevo;
+CREATE SCHEMA nuevo;
 DROP SCHEMA nuevo;
 ANALYZE VERBOSE public.tabla;
 ANALYZE VERBOSE;
@@ -19,11 +19,17 @@ ROLLBACK TO tom;
 ROLLBACK TRANSACTION TO SAVEPOINT tom;
 RELEASE SAVEPOINT tom;
 DROP INDEX IF EXISTS public.indice;
- indice tablac1 COLLATE c1 colacion asc, c2 c2 desc, c3 COLLATE c3 colar, c4 c4 asc, c5 c5, c6 c6);
+CREATE INDEX indice ON tabla ( indice tablac1 COLLATE colacion ASC, c2 DESC, c3 COLLATE colar, c4 ASC, c5, c6);
 DROP TABLE tabla RESTRICT;
 DROP VIEW IF EXISTS public.vista RESTRICT;
 REINDEX INDEX public.indice;
 REINDEX DATABASE public;
 REINDEX DATABASE temp;
 VACUUM;
- table "holi" null rollback "no se puede"
+SELECT *, tom.* FROM table WHERE public.second."holi"=null||RAISE USING MESSAGE="fatal error"tom table public.second;
+SELECT * FROM tabla tabla INTERSECT SELECT c1, c2 FROM tabla2 tabla2;
+ DELETE FROM tom.tabla NOT INDEXED tom.tablaWHERE id=1;
+INSERT INTOtablaCREATE TRIGGER Language_en_US_update INSTEAD OF UPDATE OF ON Language_en_US BEGIN
+Language_en_US_updateLanguage_en_US UPDATE SET Text = NEW.Text, Gender = NEW.Gender, Plurality = NEW.Plurality LocalizedText LocalizedTextNEWNEWNEWNEWWHERE Language='en_US'andTag=NEW.Tag;
+END;
+
