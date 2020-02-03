@@ -893,10 +893,29 @@ public class Listener extends SqliteBaseListener {
         }else{
             a+="INSERT";
         }
-        a+=" INTO";
+        a+=" INTO ";
         traduccion += a;
         System.out.println(a);
         super.enterInsert_stmt(ctx);
+    }
+
+    @Override
+    public void exitInsert_stmt(SqliteParser.Insert_stmtContext ctx){
+        String a = "";
+        if(ctx.column_name()!=null) {
+            a += ctx.getText().substring(ctx.getText().indexOf("("), ctx.getText().toUpperCase().indexOf("VALUES"));
+        }
+        if(ctx.K_DEFAULT()!=null){
+            a+=" DEFAULT VALUES";
+        }else if (ctx.select_stmt()!=null){
+            a+=ctx.select_stmt().getText();
+        }else {
+            a += " VALUES " + ctx.getText().substring(ctx.getText().toUpperCase().indexOf("VALUES") + 6);
+        }
+        a+=";\n";
+        traduccion += a;
+        System.out.println(a);
+        super.exitInsert_stmt(ctx);
     }
 
     @Override
@@ -1186,7 +1205,9 @@ public class Listener extends SqliteBaseListener {
         }
 
         System.out.print(a);
-        traduccion += a;
+        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")){
+            traduccion += a;
+        }
         super.enterDatabase_name(ctx);
     }
 
