@@ -3,17 +3,17 @@ package com.company;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import java.io.File;
+import java.nio.file.Path;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(Path args) throws Exception {
         try{
             // crear un analizador léxico que se alimenta a partir de la entrada (archivo  o consola)
             SqliteLexer lexer;
-            if (args.length>0)
-                lexer = new SqliteLexer(CharStreams.fromFileName(args[0]));
-            else
-                lexer = new SqliteLexer(CharStreams.fromStream(System.in));
+
+                lexer = new SqliteLexer(CharStreams.fromPath(args));
+
             // Identificar al analizador léxico como fuente de tokens para el sintactico
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             // Crear el objeto correspondiente al analizador sintáctico que se alimenta a partir del buffer de tokens

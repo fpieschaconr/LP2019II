@@ -25,7 +25,7 @@ public class Listener extends SqliteBaseListener {
     private static final String[] collations = {"binary", "rtrim", "nocase"};
     private static ArrayList<String> triggerTable = new ArrayList<>();
 
-    private static void escribirTraduccion(String file) {
+    public static void escribirTraduccion(String file) {
         String str = "";
         str = "-- Generated postgreSQL file from SQLite\n-- Final ANTLRv4 Project LP 2019-II\n-- By Tom Erick Perez, Felipe Pieschacon and Juan Nicolas Nobza\n\n" + System.lineSeparator() + traduccion;
         crearArchivo(file, str);
@@ -58,7 +58,7 @@ public class Listener extends SqliteBaseListener {
     @Override
     public void exitParse(SqliteParser.ParseContext ctx) {
         String a = ctx.getText();
-        escribirTraduccion(file);
+        //escribirTraduccion(file);
         super.exitParse(ctx);
     }
 
@@ -365,7 +365,9 @@ public class Listener extends SqliteBaseListener {
                 }
             }
         }
+
         a += " ON ";
+
         if (ctx.database_name(1) != null) {
             a += ctx.database_name(1).getText() + ".";
         }
@@ -377,8 +379,10 @@ public class Listener extends SqliteBaseListener {
         if (ctx.K_WHEN() != null) {
             a += " WHEN" + ctx.expr().getText();
         }
+
         a += " BEGIN\n";
         /*if (ctx.update_stmt() != null) {
+
             for (int i = 0; i < ctx.update_stmt().size(); i++) {
                 a += ctx.update_stmt(i).getText() + ";";
                 System.out.println(ctx.update_stmt(i).getText() + ";");
@@ -401,6 +405,7 @@ public class Listener extends SqliteBaseListener {
                 a += ctx.select_stmt(i).getText() + ";";
                 System.out.println(ctx.select_stmt(i).getText() + ";");
             }
+
         }*/
 
         traduccion += a;
@@ -409,6 +414,7 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+
     public void exitCreate_trigger_stmt(SqliteParser.Create_trigger_stmtContext ctx) {
         String a = "END;\n";
         traduccion += a;
@@ -417,6 +423,7 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+
     public void enterCreate_view_stmt(SqliteParser.Create_view_stmtContext ctx) {
         String a = "CREATE";
         if (ctx.K_TEMP() != null) {
@@ -508,6 +515,7 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+
     public void enterUpdate_stmt(SqliteParser.Update_stmtContext ctx) {
         String a = "";
         if (ctx.with_clause() != null) {
@@ -592,6 +600,7 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+
     public void enterDetach_stmt(SqliteParser.Detach_stmtContext ctx) {
         String a = "DROP SCHEMA";
         System.out.print(a);
@@ -815,6 +824,7 @@ public class Listener extends SqliteBaseListener {
         traduccion += a;
         System.out.println(a);
         super.exitSimple_select_stmt(ctx);
+
     }
 
     @Override
@@ -980,15 +990,34 @@ public class Listener extends SqliteBaseListener {
         if (ctx.with_clause() != null) {
             a += ctx.with_clause().getText();
         }
-        if (ctx.K_REPLACE()!=null){
-            a+="REPLACE";
-        }else{
-            a+="INSERT";
-        }
-        a+=" INTO";
+        
+        a+="INSERT";
+        
+
+        a+=" INTO ";
         traduccion += a;
         System.out.println(a);
         super.enterInsert_stmt(ctx);
+    }
+
+    @Override
+    public void exitInsert_stmt(SqliteParser.Insert_stmtContext ctx){
+        String a = "";
+        if(ctx.column_name()!=null) {
+            a += ctx.getText().substring(ctx.getText().indexOf("("), ctx.getText().toUpperCase().indexOf("VALUES"));
+        }
+        if(ctx.K_DEFAULT()!=null){
+            a+=" DEFAULT VALUES";
+        }else if (ctx.select_stmt()!=null){
+            a+=ctx.select_stmt().getText();
+        }else {
+            a += " VALUES " + ctx.getText().substring(ctx.getText().toUpperCase().indexOf("VALUES") + 6);
+        }
+        a+=";\n";
+        traduccion += a;
+        System.out.println(a);
+        super.exitInsert_stmt(ctx);
+
     }
 
     @Override
@@ -1189,6 +1218,7 @@ public class Listener extends SqliteBaseListener {
     @Override
     public void enterVacuum_stmt(SqliteParser.Vacuum_stmtContext ctx) {
         String a = "VACUUM;\n";
+
         System.out.print(a);
         traduccion += a;
         super.enterVacuum_stmt(ctx);
@@ -1215,6 +1245,7 @@ public class Listener extends SqliteBaseListener {
     }
 
     @Override
+
     public void enterExpr(SqliteParser.ExprContext ctx) {
         String a = "";
         if (ctx.getParent().start.getText().toLowerCase().equals("attach")) {
@@ -1278,7 +1309,9 @@ public class Listener extends SqliteBaseListener {
         }
 
         System.out.print(a);
-        traduccion += a;
+        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")&&!ctx.getParent().getParent().getText().toUpperCase().contains("SELECT")&&!(ctx.getParent().getRuleIndex() == SqliteParser.RULE_expr)){
+            traduccion += a;
+        }
         super.enterDatabase_name(ctx);
     }
 
@@ -1298,7 +1331,9 @@ public class Listener extends SqliteBaseListener {
             a = " " + ctx.start.getText();
         }
         System.out.println(a);
-        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")){
+
+        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")&&!ctx.getParent().getParent().getText().toUpperCase().contains("SELECT")&&!(ctx.getParent().getRuleIndex() == SqliteParser.RULE_expr)){
+
             traduccion += a;
         }
         super.enterTable_name(ctx);

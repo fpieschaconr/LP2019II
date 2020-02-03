@@ -25,3 +25,4 @@ select * from tabla intersect select c1, c2 from tabla2;
 DELETE FROM tom.tabla NOT INDEXED WHERE id = 1;
 insert into tabla(c1, c2, c3) values(3, 4.5, "interesante");
 CREATE TRIGGER Language_en_US_update INSTEAD OF UPDATE ON Language_en_US BEGIN UPDATE LocalizedText SET Text = NEW.Text , Gender = NEW.Gender, Plurality = NEW.Plurality WHERE Language = 'en_US' and Tag = NEW.Tag; END;
+insert into co.tabla(c1, c2, c3) values(3, 4.5, "interesante"),(1,2.1,"no");
