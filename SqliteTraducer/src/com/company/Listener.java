@@ -1205,7 +1205,7 @@ public class Listener extends SqliteBaseListener {
         }
 
         System.out.print(a);
-        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")){
+        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")&&!ctx.getParent().getParent().getText().toUpperCase().contains("SELECT")&&!(ctx.getParent().getRuleIndex() == SqliteParser.RULE_expr)){
             traduccion += a;
         }
         super.enterDatabase_name(ctx);
@@ -1227,7 +1227,7 @@ public class Listener extends SqliteBaseListener {
             a = " " + ctx.start.getText();
         }
         System.out.println(a);
-        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")){
+        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")&&!ctx.getParent().getParent().getText().toUpperCase().contains("SELECT")&&!(ctx.getParent().getRuleIndex() == SqliteParser.RULE_expr)){
             traduccion += a;
         }
         super.enterTable_name(ctx);

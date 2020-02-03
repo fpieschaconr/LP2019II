@@ -26,8 +26,8 @@ REINDEX INDEX public.indice;
 REINDEX DATABASE public;
 REINDEX DATABASE temp;
 VACUUM;
-SELECT *, tom.* FROM table WHERE public.second."holi"=null||RAISE USING MESSAGE="fatal error"tom table public.second;
-SELECT * FROM tabla tabla INTERSECT SELECT c1, c2 FROM tabla2 tabla2;
+SELECT *, tom.* FROM table WHERE public.second."holi"=null||RAISE USING MESSAGE="fatal error";
+SELECT * FROM tabla INTERSECT SELECT c1, c2 FROM tabla2;
  DELETE FROM tom.tabla NOT INDEXED tom.tablaWHERE id=1;
 INSERT INTO  co.tabla(c1,c2,c3) VALUES (3,4.5,"interesante"),(1,2.1,"no");
 
