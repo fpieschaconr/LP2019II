@@ -29,6 +29,7 @@ public class Listener extends SqliteBaseListener {
         String str = "";
         str = "-- Generated postgreSQL file from SQLite\n-- Final ANTLRv4 Project LP 2019-II\n-- By Tom Erick Perez, Felipe Pieschacon and Juan Nicolas Nobza\n\n" + System.lineSeparator() + traduccion;
         crearArchivo(file, str);
+        traduccion = "";
     }
 
     private static void crearArchivo(String file, String str) {
@@ -82,7 +83,9 @@ public class Listener extends SqliteBaseListener {
         String a="";
         a+=ctx.column_name().getText();
         if (ctx.type_name()!= null){
-            a+=" "+ctx.type_name().getText().toUpperCase();
+            for(int i = 0; i < ctx.type_name().getChildCount(); i++){
+                a += " " + ctx.type_name().getChild(i).getText().toUpperCase();
+            }
         }
         if(!ctx.column_constraint().isEmpty()){
             for(int i=0; i<ctx.column_constraint().size(); i++){
@@ -99,9 +102,9 @@ public class Listener extends SqliteBaseListener {
                     }
                 }else if (b.K_NULL()!= null){
                     if (b.K_NOT()!=null){
-                        a+=" NOT";
+                        a+=" NOT ";
                     }
-                    a+=" NULL";
+                    a+=" NULL ";
                     if (b.conflict_clause().K_ON()!=null){
                         a+=" ON CONFLICT "+b.conflict_clause().getChild(2).getText().toUpperCase();
                     }
@@ -170,7 +173,16 @@ public class Listener extends SqliteBaseListener {
                 }
             }
         }
-        traduccion +=a+";\n";
+        if(ctx.getParent().getChild(ctx.getParent().getChildCount()-2).getText().equals(ctx.getText())||ctx.getParent().getChild(ctx.getParent().getChildCount()-3).getText().equals(ctx.getText())) {
+            if(ctx.getParent().getText().toLowerCase().contains("createtable"))
+                a += ");\n";
+            else
+                a += ";\n";
+        }else{
+            a += ",\n";
+        }
+        System.out.println(a);
+        traduccion += a;
         super.enterColumn_def(ctx);
     }
 
@@ -280,15 +292,16 @@ public class Listener extends SqliteBaseListener {
         } else if (ctx.K_TEMP() != null) {
             a += " TEMP";
         }
-        a += " TABLE";
+        a += " TABLE ";
         if (ctx.K_IF() != null) {
-            a += " IF NOT EXISTS";
+            a += "IF NOT EXISTS ";
         }
         if (ctx.database_name() != null) {
             a += ctx.database_name().getText() + ".";
         }
         a += ctx.table_name().getText();
-        if (ctx.column_def() != null) {
+        a += "(";
+        /*if (ctx.column_def() != null) {
             a += "(";
             for (int i = 0; i < ctx.column_def().size(); i++) {
                 if (i == (ctx.column_def().size() - 1)) {
@@ -314,7 +327,8 @@ public class Listener extends SqliteBaseListener {
             if (ctx.K_WITHOUT() != null) {
                 a += " WITHOUT" + ctx.IDENTIFIER().getText();
             }
-        } else if (ctx.K_AS() != null) {
+        }*/
+        if (ctx.K_AS() != null) {
             a += " AS ";
         }
         traduccion += a;
@@ -521,14 +535,8 @@ public class Listener extends SqliteBaseListener {
         if (ctx.with_clause() != null) {
             a += ctx.with_clause().getText();
         }
-        a += " UPDATE SET ";
-        for(int i=0; i < ctx.column_name().size(); i++){
-            if(i == ctx.column_name().size()-1){
-                a += ctx.column_name().get(i).getText() + " = " + ctx.expr().get(i).getText() + " ";
-            }else{
-                a += ctx.column_name().get(i).getText() + " = " + ctx.expr().get(i).getText() + ", ";
-            }
-        }
+        a += " UPDATE ";
+
         traduccion += a;
         System.out.println(a);
         super.enterUpdate_stmt(ctx);
@@ -536,7 +544,15 @@ public class Listener extends SqliteBaseListener {
 
     @Override
     public void exitUpdate_stmt(SqliteParser.Update_stmtContext ctx) {
-        String a = "";
+        String a = " SET ";
+
+        for(int i=0; i < ctx.column_name().size(); i++){
+            if(i == ctx.column_name().size()-1){
+                a += ctx.column_name().get(i).getText() + " = " + ctx.expr().get(i).getText() + " ";
+            }else{
+                a += ctx.column_name().get(i).getText() + " = " + ctx.expr().get(i).getText() + ", ";
+            }
+        }
         if (ctx.K_WHERE() != null) {
             a += "WHERE " + ctx.expr().get(ctx.expr().size()-1).getText();
         }
@@ -552,14 +568,7 @@ public class Listener extends SqliteBaseListener {
         if (ctx.with_clause() != null) {
             a += ctx.with_clause().getText();
         }
-        a += " UPDATE SET ";
-        for(int i=0; i < ctx.column_name().size(); i++){
-            if(i == ctx.column_name().size()-1){
-                a += ctx.column_name().get(i).getText() + " = " + ctx.expr().get(i).getText() + " ";
-            }else{
-                a += ctx.column_name().get(i).getText() + " = " + ctx.expr().get(i).getText() + ", ";
-            }
-        }
+        a += " UPDATE ";
         traduccion += a;
         System.out.println(a);
         super.enterUpdate_stmt_limited(ctx);
@@ -567,7 +576,15 @@ public class Listener extends SqliteBaseListener {
 
     @Override
     public void exitUpdate_stmt_limited(SqliteParser.Update_stmt_limitedContext ctx) {
-        String a = "";
+        String a = " SET ";
+
+        for(int i=0; i < ctx.column_name().size(); i++){
+            if(i == ctx.column_name().size()-1){
+                a += ctx.column_name().get(i).getText() + " = " + ctx.expr().get(i).getText() + " ";
+            }else{
+                a += ctx.column_name().get(i).getText() + " = " + ctx.expr().get(i).getText() + ", ";
+            }
+        }
         if (ctx.K_WHERE() != null) {
             a += "WHERE " + ctx.expr(ctx.expr().size()-3).getText();
         }
@@ -1309,7 +1326,7 @@ public class Listener extends SqliteBaseListener {
         }
 
         System.out.print(a);
-        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")&&!ctx.getParent().getParent().getText().toUpperCase().contains("SELECT")&&!(ctx.getParent().getRuleIndex() == SqliteParser.RULE_expr)){
+        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")&&!ctx.getParent().getParent().getText().toUpperCase().contains("UPDATE")&&!ctx.getParent().getParent().getText().toUpperCase().contains("CREATE")&&!(ctx.getParent().getRuleIndex() == SqliteParser.RULE_expr)){
             traduccion += a;
         }
         super.enterDatabase_name(ctx);
@@ -1332,7 +1349,7 @@ public class Listener extends SqliteBaseListener {
         }
         System.out.println(a);
 
-        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")&&!ctx.getParent().getParent().getText().toUpperCase().contains("SELECT")&&!(ctx.getParent().getRuleIndex() == SqliteParser.RULE_expr)){
+        if (!ctx.getParent().getText().toUpperCase().contains("ALTER")&&!ctx.getParent().getParent().getText().toUpperCase().contains("UPDATE")&&!ctx.getParent().getParent().getText().toUpperCase().contains("SELECT")&&!ctx.getParent().getParent().getText().toUpperCase().contains("CREATE")&&!(ctx.getParent().getRuleIndex() == SqliteParser.RULE_expr)){
 
             traduccion += a;
         }
@@ -1364,8 +1381,10 @@ public class Listener extends SqliteBaseListener {
         if (!ctx.getParent().getText().contains(".")) {
             a = " " + ctx.start.getText();
         }
-        System.out.println(a);
-        traduccion += a;
+        if(!ctx.getParent().getParent().getText().toUpperCase().contains("CREATE")) {
+            System.out.println(a);
+            traduccion += a;
+        }
         super.enterTrigger_name(ctx);
     }
 
@@ -1407,7 +1426,7 @@ public class Listener extends SqliteBaseListener {
     }
 
 
-    @Override
+    /*@Override
     public void enterSigned_number(SqliteParser.Signed_numberContext ctx) {
         String a = " " + ctx.getText();
         System.out.println(a);
@@ -1415,7 +1434,7 @@ public class Listener extends SqliteBaseListener {
             traduccion += a;
         }
         super.enterSigned_number(ctx);
-    }
+    }*/
 
     /*@Override
     public void enterLiteral_value(SqliteParser.Literal_valueContext ctx) {

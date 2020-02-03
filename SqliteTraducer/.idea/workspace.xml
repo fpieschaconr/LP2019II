@@ -8,8 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9523aade-a878-450d-bf61-0031c5a181d0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/entrada.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/entrada.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Listener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Listener.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +35,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -56,18 +57,6 @@
       <recent name="C:\Users\57311\IdeaProjects\SqliteTraducer\src\com\company" />
       <recent name="C:\Users\57311\IdeaProjects\SqliteTraducer\input" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.FileChooser">
     <configuration name="FileChooser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -117,6 +106,7 @@
       <workItem from="1580667671982" duration="13790000" />
       <workItem from="1580694025545" duration="8972000" />
       <workItem from="1580704952161" duration="686000" />
+      <workItem from="1580732069949" duration="3800000" />
     </task>
     <task id="LOCAL-00001" summary="insert added and database_name alter table clause">
       <created>1580696488607</created>
@@ -175,22 +165,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1580515770009" />
-    <state width="1286" height="163" key="GridCell.Tab.0.bottom" timestamp="1580690996498">
+    <state width="1286" height="163" key="GridCell.Tab.0.bottom" timestamp="1580735909398">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1286" height="163" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580690996498" />
-    <state width="1286" height="163" key="GridCell.Tab.0.center" timestamp="1580690996498">
+    <state width="1286" height="163" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580735909398" />
+    <state width="1286" height="163" key="GridCell.Tab.0.center" timestamp="1580735909398">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1286" height="163" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580690996498" />
-    <state width="1286" height="163" key="GridCell.Tab.0.left" timestamp="1580690996498">
+    <state width="1286" height="163" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580735909398" />
+    <state width="1286" height="163" key="GridCell.Tab.0.left" timestamp="1580735909398">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1286" height="163" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580690996498" />
-    <state width="1286" height="163" key="GridCell.Tab.0.right" timestamp="1580690996498">
+    <state width="1286" height="163" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580735909398" />
+    <state width="1286" height="163" key="GridCell.Tab.0.right" timestamp="1580735909398">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1286" height="163" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580690996498" />
+    <state width="1286" height="163" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580735909398" />
     <state x="378" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1580667749987">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
